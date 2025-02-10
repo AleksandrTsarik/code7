@@ -1,0 +1,141 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+html {
+  scroll-behavior: smooth;
+}
+img {
+  max-width: 100%;
+}
+a {
+  text-decoration: none;
+}
+.title {
+  font-weight: var(--ff);
+  font-weight: 500;
+}
+h2.title {
+  font-size: 44px;
+  font-weight: 100%;
+  @media (max-width: 767px) {
+    font-size: 32px;
+  }
+  @media (max-width: 575px) {
+    font-size: 24px;
+  }
+}
+h1.title {
+  font-size: 72px;
+  line-height: 100%;
+  @media (max-width: 767px) {
+    font-size: 52px;
+  }
+  @media (max-width: 575px) {
+    font-size: 32px;
+  }
+}
+
+.t-28 {
+  font-size: 28px;
+  line-height: 110%;
+  font-weight: 500;
+  @media (max-width: 575px) {
+    font-size: 20px;
+  }
+}
+.t-20 {
+  font-size: 20px;
+  line-height: 110%;
+  @media (max-width: 767px) {
+    font-size: 18px;
+  }
+  @media (max-width: 575px) {
+    font-size: 16px;
+  }
+}
+.t-18 {
+  font-size: 18px;
+  line-height: 110%;
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
+  @media (max-width: 575px) {
+    font-size: 14px;
+  }
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+[class*="__container"] {
+  width: 100%;
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+[class*="__wrap"] {
+  width: 100%;
+  max-width: 1190px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+section {
+  margin: 128px 0;
+  &:first-child {
+    margin-top: 12px;
+  }
+}
+.btn {
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 24px;
+  border: solid 1px transparent;
+  padding: 15px 24px;
+  font-size: 16px;
+  transition: 0.3s;
+  &.btn-light {
+    border-color: rgba(var(--primary));
+    color: rgba(var(--primary));
+    &:hover {
+      @media (any-hover: hover) {
+        background-color: rgba(var(--primary), 0.1);
+      }
+    }
+  }
+  &.btn-dark {
+    background-color: rgba(var(--primary));
+    color: var(--light);
+    position: relative;
+    overflow: hidden;
+    &::after {
+      content: "";
+      display: block;
+      background-color: rgba(#000, 0.1);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transition: 0.3s;
+    }
+    &:hover {
+      @media (any-hover: hover) {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+// @media (any-hover: hover)
