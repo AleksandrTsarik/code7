@@ -182,8 +182,8 @@
 }
 //----header finish----//
 
-//-------solution------//
-.solution {
+//-------about------//
+.about {
   &__top {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -249,7 +249,7 @@
     }
   }
 }
-//-------solution finish------//
+//-------about finish------//
 
 //----mix------//
 .mix {
@@ -308,8 +308,8 @@
 }
 //----mix finish------//
 
-//-----help-------//
-.help {
+//-----service-------//
+.service {
   &__head {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -363,7 +363,7 @@
     padding: 16px 24px;
   }
 }
-.help-item {
+.service-item {
   border-radius: 16px;
   background-color: #fff;
   padding: 24px;
@@ -399,9 +399,9 @@
     font-size: 16px;
     p {
       margin-bottom: 1em;
-      &:last-child {
-        margin-bottom: 0;
-      }
+      // &:last-child {
+      //   margin-bottom: 0;
+      // }
     }
   }
   &__tags {
@@ -425,7 +425,7 @@
     margin-top: auto;
   }
 }
-//-----help finish-------//
+//-----service finish-------//
 
 //---------modern-----------//
 .modern {
@@ -520,3 +520,80 @@
   }
 }
 //---------modern finish-----------//
+
+//---------stack-----------//
+.marquee-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+  background-color: var(--body);
+  //padding: 85px 0;
+  margin-top: 40px;
+  gap: 20px;
+  &::after,
+  &::before {
+    content: "";
+    height: 100%;
+    top: 0;
+    width: 10%;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+  }
+  &::after {
+    right: -5%;
+    background-image: linear-gradient(
+      to left,
+      #eeeeee 50%,
+      rgba(#eeeeee, 0.05)
+    );
+  }
+  &::before {
+    left: -5%;
+    background-image: linear-gradient(
+      to right,
+      #eeeeee 50%,
+      rgba(#eeeeee, 0.05)
+    );
+  }
+}
+.marquee {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  counter-reset: item;
+  justify-content: space-around;
+  min-width: 100%;
+  animation: scroll 60s linear infinite;
+  // &__item {
+  //   filter: grayscale(100%);
+  //   transition: 0.3s;
+  //   text-align: center;
+  //   &:hover {
+  //     @media (any-hover: hover) {
+  //       filter: grayscale(0);
+  //     }
+  //   }
+  //   a {
+  //     display: block;
+  //   }
+  // }
+}
+
+.reverce {
+  animation-direction: reverse;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 20px));
+  }
+}
+
+//---------stack finish-----------//
