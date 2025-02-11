@@ -97,15 +97,6 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// window.addEventListener("scroll", (event) => {
-//   var elem = document.getElementById("gotoptop");
-//   var y = scrollY;
-//   if (y < 200) {
-//     elem.style.display = "none";
-//   } else {
-//     elem.style.display = "block";
-//   }
-// });
 
 document.addEventListener("scroll", handleScroll);
 // get a reference to our predefined button
@@ -132,3 +123,23 @@ function scrollToTop() {
     behavior: "smooth"
   });
 }
+
+
+//-----модалка по отправке
+const sendForm = document.querySelector('.js-send');
+const modalForm = document.querySelector('.js-modal');
+const modalFormClose = document.querySelector('.js-modal-close');
+
+sendForm.addEventListener('click', function(e) {
+  e.preventDefault();
+  modalForm.classList.add('modal-open');
+  bodyLock.classList.add("modal-open");
+})
+
+document.addEventListener("click", function (event) {
+  const clickInside = event.composedPath().includes(sendForm);
+  if (!clickInside && !sendForm.contains(event.target)) {
+    modalForm.classList.remove("modal-open");
+    bodyLock.classList.remove("modal-open");
+  }
+});
