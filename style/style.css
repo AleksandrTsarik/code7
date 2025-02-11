@@ -473,6 +473,9 @@ section:first-child {
 .burger span:nth-child(3) {
   bottom: 20%;
 }
+.burger.active {
+  z-index: 50;
+}
 .burger.active span:nth-child(1) {
   top: 30%;
   animation-name: anim-top-strip;

@@ -99,6 +99,7 @@
     }
   }
   &.active {
+    z-index: 50;
     span {
       &:nth-child(1) {
         top: 30%;
