@@ -379,6 +379,7 @@
     // padding-bottom: 50%;
     @media (max-width: 767px) {
       height: auto;
+      min-height: 40vw;
     }
     img {
       transition: 0.7s;
@@ -394,6 +395,7 @@
     top: 20px;
     z-index: 1;
     display: flex;
+    align-items: flex-end;
     gap: 8px;
     flex-wrap: wrap;
     &--light {
@@ -447,6 +449,9 @@
     justify-content: space-between;
     align-items: start;
     margin-bottom: 40px;
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr;
+    }
   }
   &__subtitle {
     margin-top: 0.4em;

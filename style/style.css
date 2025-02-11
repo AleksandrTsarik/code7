@@ -774,6 +774,7 @@ section:first-child {
 @media (max-width: 767px) {
   .mix-item__img {
     height: auto;
+    min-height: 40vw;
   }
 }
 .mix-item__img img {
@@ -790,6 +791,7 @@ section:first-child {
   top: 20px;
   z-index: 1;
   display: flex;
+  align-items: flex-end;
   gap: 8px;
   flex-wrap: wrap;
 }
@@ -830,6 +832,11 @@ section:first-child {
   justify-content: space-between;
   align-items: start;
   margin-bottom: 40px;
+}
+@media (max-width: 1023px) {
+  .service__head {
+    grid-template-columns: 1fr;
+  }
 }
 .service__subtitle {
   margin-top: 0.4em;
