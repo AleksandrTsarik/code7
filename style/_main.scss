@@ -842,3 +842,121 @@
   }
 }
 //---------offer work------------//
+
+//---------faq------------//
+.faq {
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__block {
+    &:first-child {
+      display: flex;
+      flex-direction: column;
+      img {
+        margin-top: auto;
+        @media (max-width: 1023px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+//---------faq finish------------//
+//---------job------------//
+.job {
+  margin-top: 64px;
+  &__bg {
+    background-image: url("../img/consult.webp");
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    border-radius: 24px;
+    @media (max-width: 1023px) {
+      background: rgba(20, 21, 23, 1);
+    }
+  }
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__offer {
+    margin-bottom: 40px;
+    p {
+      color: #fff;
+      margin-bottom: 16px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    a {
+      color: rgb(var(--primary));
+      font-style: 20px;
+      white-space: nowrap;
+    }
+  }
+}
+//---------job finish------------//
+
+//---------contact------------//
+.contact {
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+.contact-item {
+  margin-bottom: 32px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &__phone {
+    color: rgb(var(--primary));
+    margin-bottom: 16px;
+    display: block;
+  }
+  &__email {
+    display: block;
+  }
+  &__social {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      @media (max-width: 575px) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  &__photo {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    p {
+    }
+  }
+}
+//---------contact finish------------//

@@ -22,7 +22,7 @@ document.addEventListener("click", function (event) {
 //---accordions
 const accordion = document.querySelectorAll(".accordion-modern");
 const accordion2 = document.querySelectorAll(".accordion-work");
-//const accordion = document.querySelectorAll(".accordion-modern");
+const accordion3 = document.querySelectorAll(".accordion-faq");
 
 accordion.forEach((element) => {
   element.addEventListener("click", function () {
@@ -40,6 +40,16 @@ accordion2.forEach((element) => {
       element.classList.remove("open");
     } else {
       accordion2.forEach((elem) => elem.classList.remove("open"));
+      element.classList.add("open");
+    }
+  });
+});
+accordion3.forEach((element) => {
+  element.addEventListener("click", function () {
+    if (element.classList.contains("open")) {
+      element.classList.remove("open");
+    } else {
+      accordion3.forEach((elem) => elem.classList.remove("open"));
       element.classList.add("open");
     }
   });
