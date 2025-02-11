@@ -734,3 +734,111 @@
   }
 }
 //---------work finish------------//
+
+//---------offer------------//
+.offer {
+  &__inner {
+    position: relative;
+    &::after {
+      content: "";
+      background-image: url("../img/chain-right.webp");
+      background-repeat: no-repeat;
+      background-position: 50% 0;
+      background-size: cover;
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 190px;
+      width: 450px;
+      height: 450px;
+      @media (max-width: 1023px) {
+        display: none;
+      }
+    }
+  }
+  &__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__more {
+    a {
+      @media (max-width: 575px) {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    p {
+      margin-bottom: 24px;
+    }
+  }
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "a b ." ". c d";
+    gap: 24px;
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "a b" "c d";
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      grid-template-areas: "a" "b" "c" "d";
+    }
+  }
+}
+.offer-item {
+  background-color: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 24px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media (max-width: 767px) {
+    height: auto;
+  }
+  &:nth-child(1) {
+    grid-area: a;
+  }
+  &:nth-child(2) {
+    grid-area: b;
+  }
+  &:nth-child(3) {
+    grid-area: c;
+  }
+  &:nth-child(4) {
+    grid-area: d;
+  }
+  &__name {
+    color: rgb(var(--primary));
+    font-size: 28px;
+    font-weight: 500;
+    padding-bottom: 16px;
+  }
+  &__descr {
+    p {
+      font-size: 16px;
+      color: inherit;
+    }
+  }
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 16px;
+    span {
+      color: rgb(var(--primary));
+      background-color: rgba(var(--primary), 0.1);
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 30px;
+    }
+  }
+}
+//---------offer work------------//

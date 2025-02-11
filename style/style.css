@@ -1056,6 +1056,117 @@ section:first-child {
   color: rgba(20, 21, 23, 0.6);
 }
 
+.offer__inner {
+  position: relative;
+}
+.offer__inner::after {
+  content: "";
+  background-image: url("../img/chain-right.webp");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 190px;
+  width: 450px;
+  height: 450px;
+}
+@media (max-width: 1023px) {
+  .offer__inner::after {
+    display: none;
+  }
+}
+.offer__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+@media (max-width: 767px) {
+  .offer__head {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 575px) {
+  .offer__more a {
+    width: 100%;
+    text-align: center;
+  }
+}
+.offer__more p {
+  margin-bottom: 24px;
+}
+.offer__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "a b ." ". c d";
+  gap: 24px;
+}
+@media (max-width: 1023px) {
+  .offer__body {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "a b" "c d";
+  }
+}
+@media (max-width: 767px) {
+  .offer__body {
+    grid-template-columns: 1fr;
+    grid-template-areas: "a" "b" "c" "d";
+  }
+}
+
+.offer-item {
+  background-color: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 24px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media (max-width: 767px) {
+  .offer-item {
+    height: auto;
+  }
+}
+.offer-item:nth-child(1) {
+  grid-area: a;
+}
+.offer-item:nth-child(2) {
+  grid-area: b;
+}
+.offer-item:nth-child(3) {
+  grid-area: c;
+}
+.offer-item:nth-child(4) {
+  grid-area: d;
+}
+.offer-item__name {
+  color: rgb(var(--primary));
+  font-size: 28px;
+  font-weight: 500;
+  padding-bottom: 16px;
+}
+.offer-item__descr p {
+  font-size: 16px;
+  color: inherit;
+}
+.offer-item__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 16px;
+}
+.offer-item__tags span {
+  color: rgb(var(--primary));
+  background-color: rgba(var(--primary), 0.1);
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 30px;
+}
+
 body {
   font-family: var(--ff);
   font-weight: 400;
