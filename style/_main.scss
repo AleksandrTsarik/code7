@@ -346,6 +346,9 @@
       max-width: 50%;
       display: block;
       margin: 110px auto 60px;
+      @media (max-width: 1400px) {
+        max-width: 100%;
+      }
     }
   }
   &__list {
@@ -371,9 +374,11 @@
     position: relative;
     margin-bottom: 16px;
     background-color: #fff;
-    height: 40vh;
+    height: 25vw;
+    //height: 40vh;
+    // padding-bottom: 50%;
     @media (max-width: 767px) {
-      height: 30vh;
+      height: auto;
     }
     img {
       transition: 0.7s;

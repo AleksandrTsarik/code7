@@ -87,7 +87,7 @@ a {
 
 h2.title {
   font-size: 44px;
-  font-weight: 100%;
+  font-weight: 500;
   line-height: 110%;
 }
 @media (max-width: 767px) {
@@ -735,6 +735,11 @@ section:first-child {
   display: block;
   margin: 110px auto 60px;
 }
+@media (max-width: 1400px) {
+  .mix__title.title {
+    max-width: 100%;
+  }
+}
 .mix__list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -764,11 +769,11 @@ section:first-child {
   position: relative;
   margin-bottom: 16px;
   background-color: #fff;
-  height: 40vh;
+  height: 25vw;
 }
 @media (max-width: 767px) {
   .mix-item__img {
-    height: 30vh;
+    height: auto;
   }
 }
 .mix-item__img img {
