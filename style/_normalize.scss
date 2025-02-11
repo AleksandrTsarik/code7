@@ -96,6 +96,9 @@ section {
   &:first-child {
     margin-top: 12px;
   }
+  @media (max-width: 1023px) {
+    margin: 100px auto;
+  }
 }
 
 .btn {
