@@ -349,6 +349,9 @@
       @media (max-width: 1400px) {
         max-width: 100%;
       }
+      @media (max-width: 1023px) {
+        margin: 50px auto 50px;
+      }
     }
   }
   &__list {
@@ -599,61 +602,7 @@
     }
   }
 }
-.accordion {
-  border-bottom: solid 1px;
-  &:first-child {
-    border-top: solid 1px;
-  }
-  &__body {
-    font-size: 14px;
-    opacity: 0;
-    height: 0;
-    transition: 0.3s;
-  }
-  &__head {
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    cursor: pointer;
-    padding: 25px 0;
-    span {
-      display: block;
-      width: 18px;
-      height: 18px;
-      position: relative;
-      transition: 0.3s;
-      &::after,
-      &::before {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 1px;
-        background-color: var(--color_text);
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
-      &::after {
-        transform: translate(-50%, -50%) rotate(90deg);
-      }
-      &::before {
-        transform: translate(-50%, -50%) rotate(-0deg);
-      }
-    }
-    &.open + .accordion__body {
-      opacity: 1;
-      //transform: translateY(0);
-      height: auto;
-      padding-bottom: 25px;
-    }
-    &.open span {
-      transform: rotate(45deg);
-    }
-  }
-}
+
 //---------modern finish-----------//
 
 //---------stack-----------//

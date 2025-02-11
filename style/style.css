@@ -164,6 +164,61 @@ ul {
   padding: 0;
 }
 
+.accordion {
+  border-bottom: solid 1px;
+}
+.accordion:first-child {
+  border-top: solid 1px;
+}
+.accordion__body {
+  font-size: 14px;
+  opacity: 0;
+  height: 0;
+  transition: 0.3s;
+}
+.accordion__head {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  padding: 25px 0;
+}
+.accordion__head span {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  position: relative;
+  transition: 0.3s;
+}
+.accordion__head span::after, .accordion__head span::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color_text);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.accordion__head span::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.accordion__head span::before {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.accordion__head.open + .accordion__body {
+  opacity: 1;
+  height: auto;
+  padding-bottom: 25px;
+}
+.accordion__head.open span {
+  transform: rotate(45deg);
+}
+
 [class*=__container] {
   width: 100%;
   max-width: 1900px;
@@ -740,6 +795,11 @@ section:first-child {
     max-width: 100%;
   }
 }
+@media (max-width: 1023px) {
+  .mix__title.title {
+    margin: 50px auto 50px;
+  }
+}
 .mix__list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -984,60 +1044,6 @@ section:first-child {
   .modern__img {
     display: none;
   }
-}
-
-.accordion {
-  border-bottom: solid 1px;
-}
-.accordion:first-child {
-  border-top: solid 1px;
-}
-.accordion__body {
-  font-size: 14px;
-  opacity: 0;
-  height: 0;
-  transition: 0.3s;
-}
-.accordion__head {
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  cursor: pointer;
-  padding: 25px 0;
-}
-.accordion__head span {
-  display: block;
-  width: 18px;
-  height: 18px;
-  position: relative;
-  transition: 0.3s;
-}
-.accordion__head span::after, .accordion__head span::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: var(--color_text);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-.accordion__head span::after {
-  transform: translate(-50%, -50%) rotate(90deg);
-}
-.accordion__head span::before {
-  transform: translate(-50%, -50%) rotate(0deg);
-}
-.accordion__head.open + .accordion__body {
-  opacity: 1;
-  height: auto;
-  padding-bottom: 25px;
-}
-.accordion__head.open span {
-  transform: rotate(45deg);
 }
 
 .marquee-wrap {
