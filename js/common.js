@@ -19,55 +19,106 @@ document.addEventListener("click", function (event) {
   }
 });
 
+//---accordions
+const accordion = document.querySelectorAll(".accordion-modern");
+const accordion2 = document.querySelectorAll(".accordion-work");
+//const accordion = document.querySelectorAll(".accordion-modern");
 
-//---accordion
+accordion.forEach((element) => {
+  element.addEventListener("click", function () {
+    if (element.classList.contains("open")) {
+      element.classList.remove("open");
+    } else {
+      accordion.forEach((elem) => elem.classList.remove("open"));
+      element.classList.add("open");
+    }
+  });
+});
+accordion2.forEach((element) => {
+  element.addEventListener("click", function () {
+    if (element.classList.contains("open")) {
+      element.classList.remove("open");
+    } else {
+      accordion2.forEach((elem) => elem.classList.remove("open"));
+      element.classList.add("open");
+    }
+  });
+});
 
-const accordion = document.querySelectorAll('.accordion-modern');
-
-accordion.forEach(element => {
-	element.addEventListener('click', function() {
-		if(element.classList.contains('open')) {
-			element.classList.remove('open');
-		} else {
-			accordion.forEach(elem => elem.classList.remove('open'))
-			element.classList.add('open');
-		}
-	})
-})
-
-window.addEventListener("DOMContentLoaded", function() {
-  [].forEach.call( document.querySelectorAll('.phone-input'), function(input) {
-  var keyCode;
-  function mask(event) {
+window.addEventListener("DOMContentLoaded", function () {
+  [].forEach.call(document.querySelectorAll(".phone-input"), function (input) {
+    var keyCode;
+    function mask(event) {
       event.keyCode && (keyCode = event.keyCode);
       var pos = this.selectionStart;
       if (pos < 3) event.preventDefault();
       var matrix = "+7 (___)-___-__-__",
-          i = 0,
-          def = matrix.replace(/\D/g, ""),
-          val = this.value.replace(/\D/g, ""),
-          new_value = matrix.replace(/[_\d]/g, function(a) {
-              return i < val.length ? val.charAt(i++) || def.charAt(i) : a
-          });
+        i = 0,
+        def = matrix.replace(/\D/g, ""),
+        val = this.value.replace(/\D/g, ""),
+        new_value = matrix.replace(/[_\d]/g, function (a) {
+          return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
+        });
       i = new_value.indexOf("_");
       if (i != -1) {
-          i < 5 && (i = 3);
-          new_value = new_value.slice(0, i)
+        i < 5 && (i = 3);
+        new_value = new_value.slice(0, i);
       }
-      var reg = matrix.substr(0, this.value.length).replace(/_+/g,
-          function(a) {
-              return "\\d{1," + a.length + "}"
-          }).replace(/[+()]/g, "\\$&");
+      var reg = matrix
+        .substr(0, this.value.length)
+        .replace(/_+/g, function (a) {
+          return "\\d{1," + a.length + "}";
+        })
+        .replace(/[+()]/g, "\\$&");
       reg = new RegExp("^" + reg + "$");
-      if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) this.value = new_value;
-      if (event.type == "blur" && this.value.length < 5)  this.value = ""
+      if (
+        !reg.test(this.value) ||
+        this.value.length < 5 ||
+        (keyCode > 47 && keyCode < 58)
+      )
+        this.value = new_value;
+      if (event.type == "blur" && this.value.length < 5) this.value = "";
+    }
+
+    input.addEventListener("input", mask, false);
+    input.addEventListener("focus", mask, false);
+    input.addEventListener("blur", mask, false);
+    input.addEventListener("keydown", mask, false);
+  });
+});
+
+// window.addEventListener("scroll", (event) => {
+//   var elem = document.getElementById("gotoptop");
+//   var y = scrollY;
+//   if (y < 200) {
+//     elem.style.display = "none";
+//   } else {
+//     elem.style.display = "block";
+//   }
+// });
+
+document.addEventListener("scroll", handleScroll);
+// get a reference to our predefined button
+let scrollToTopBtn = document.querySelector(".scrollToTopBtn");
+
+function handleScroll() {
+  let scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let srollRatio = 0.2;
+
+  if ((document.documentElement.scrollTop / scrollableHeight ) > srollRatio) {
+    //show button
+    scrollToTopBtn.style.display = "flex";
+  } else {
+    //hide button
+    scrollToTopBtn.style.display = "none";
   }
+}
 
-  input.addEventListener("input", mask, false);
-  input.addEventListener("focus", mask, false);
-  input.addEventListener("blur", mask, false);
-  input.addEventListener("keydown", mask, false)
+scrollToTopBtn.addEventListener("click", scrollToTop);
 
-});
-
-});
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
