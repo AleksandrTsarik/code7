@@ -960,3 +960,81 @@
   }
 }
 //---------contact finish------------//
+
+.footer {
+  &__bg {
+    background-color: rgba(20, 21, 23, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  &__row {
+    color: rgba(20, 21, 23, 0.6);
+    font-size: 14px;
+    p {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+  &__wrap {
+    padding: 0;
+  }
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__block {
+    &:first-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      @media (max-width: 767px) {
+        order: 2;
+      }
+    }
+    &:last-child {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      @media (max-width: 767px) {
+        order: 1;
+      }
+    }
+  }
+}
+.footer-look {
+  &__name {
+    margin-bottom: 24px;
+  }
+  &__more {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+      @media (max-width: 575px) {
+        width: 100%;
+        justify-content: center;
+      }
+      svg {
+        width: 24px;
+      }
+    }
+    p {
+      font-size: 16px;
+      color: rgba(20, 21, 23, 0.6);
+      @media (max-width: 575px) {
+        margin: 0 auto;
+      }
+    }
+  }
+}
