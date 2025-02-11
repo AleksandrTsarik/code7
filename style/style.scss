@@ -10,7 +10,6 @@ body {
   color: var(--color_text);
   &.lock {
     overflow: hidden;
-    position: fixed;
     &::after {
       content: "";
       position: absolute;

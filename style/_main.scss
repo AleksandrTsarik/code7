@@ -13,21 +13,9 @@
     align-items: center;
     gap: 15px;
     flex-wrap: wrap;
-    // @media (max-width: 767px) {
-    //   flex-direction: column;
-    // }
     a {
       color: rgb(var(--primary));
       transition: 0.3s;
-      &:first-child {
-        &:hover {
-          @media (any-hover: hover) {
-            background-color: rgba(var(--primary), 0.1);
-          }
-        }
-      }
-      &:last-child {
-      }
     }
   }
   &__logo {

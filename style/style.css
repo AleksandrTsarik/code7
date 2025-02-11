@@ -396,11 +396,6 @@ section:first-child {
   color: rgb(var(--primary));
   transition: 0.3s;
 }
-@media (any-hover: hover) {
-  .header__contact a:first-child:hover {
-    background-color: rgba(var(--primary), 0.1);
-  }
-}
 .header__logo {
   max-width: 223px;
 }
@@ -1498,7 +1493,6 @@ body {
 }
 body.lock {
   overflow: hidden;
-  position: fixed;
 }
 body.lock::after {
   content: "";
