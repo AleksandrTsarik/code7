@@ -865,12 +865,13 @@ section:first-child {
   gap: 8px;
   flex-wrap: wrap;
   color: var(--color_text);
+  justify-content: flex-end;
 }
 .mix-item__tags--light span {
-  background-color: rgb(238, 238, 238);
+  background-color: rgba(238, 238, 238, 0.5);
 }
 .mix-item__tags--primary span {
-  background-color: rgba(var(--primary), 1);
+  background-color: rgba(var(--primary), 0.5);
 }
 .mix-item__tags span {
   display: block;

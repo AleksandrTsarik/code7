@@ -411,14 +411,15 @@
     gap: 8px;
     flex-wrap: wrap;
     color: var(--color_text);
+    justify-content: flex-end;
     &--light {
       span {
-        background-color: rgba(238, 238, 238, 1);
+        background-color: rgba(238, 238, 238, 0.5);
       }
     }
     &--primary {
       span {
-        background-color: rgba(var(--primary), 1);
+        background-color: rgba(var(--primary), 0.5);
         // color: rgb(var(--primary));
       }
     }
