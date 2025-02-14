@@ -1369,6 +1369,9 @@ section:last-child {
   border-radius: 30px;
 }
 
+.faq {
+  margin-bottom: 60px;
+}
 .faq__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
