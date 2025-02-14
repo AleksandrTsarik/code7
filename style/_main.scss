@@ -16,6 +16,9 @@
     a {
       color: rgb(var(--primary));
       transition: 0.3s;
+      svg path {
+        fill: rgb(var(--primary));
+      }
     }
   }
   &__logo {
@@ -23,6 +26,29 @@
     a {
       display: block;
     }
+  }
+}
+.header-social {
+  border: solid 1px rgb(var(--primary));
+  border-radius: 50%;
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  &.btn {
+    width: 30px;
+    flex: 0 0 30px;
+    height: 30px;
+    padding: 0;
+  }
+  svg {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 .header-nav {
@@ -173,40 +199,20 @@
 
 //-------banner------//
 .banner {
-  &__bg {
-    position: relative;
+  &__info {
     border-radius: 16px;
     overflow: hidden;
-    video {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  &__info {
-    position: relative;
-    z-index: 1;
+    background-image: url("../img/banner.webp");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
     padding: 120px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     color: #fff;
-  }
-
-  &__info {
     position: relative;
-    z-index: 1;
-    padding: 120px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #fff;
-
-    max-width: 1190px;
-    margin: 0 auto;
     @media (max-width: 767px) {
       padding: 80px 15px;
     }
@@ -218,22 +224,25 @@
     text-align: center;
     position: relative;
     margin-bottom: 25%;
+    max-width: 70%;
+    margin: 0 auto 25%;
     @media (max-width: 1023px) {
       margin-bottom: 40%;
+      max-width: 100%;
     }
     span {
       position: absolute;
-      right: -120px;
-      top: 70px;
+      right: 20%;
+      top: 80%;
       z-index: 0;
+      img {
+        max-width: 50%;
+      }
       @media (max-width: 1023px) {
         right: auto;
         left: 50%;
         transform: translateX(-50%);
-        top: 70%;
-        img {
-          max-width: 100%;
-        }
+        top: 100%;
       }
       @media (max-width: 575px) {
         top: 80%;
@@ -401,15 +410,16 @@
     align-items: flex-end;
     gap: 8px;
     flex-wrap: wrap;
+    color: var(--color_text);
     &--light {
       span {
-        background-color: rgba(238, 238, 238, 0.2);
+        background-color: rgba(238, 238, 238, 1);
       }
     }
     &--primary {
       span {
-        background-color: rgba(var(--primary), 0.1);
-        color: rgb(var(--primary));
+        background-color: rgba(var(--primary), 1);
+        // color: rgb(var(--primary));
       }
     }
     span {
@@ -734,6 +744,7 @@
   &:last-child {
     margin-bottom: 0;
   }
+
   &__list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -779,6 +790,8 @@
         }
       }
       &:nth-child(1) {
+        border-bottom: solid 1px rgb(var(--primary));
+        padding-bottom: 1em;
         span {
           background-image: url("../img/selectel-gray.svg");
           height: 58px;
@@ -991,10 +1004,11 @@
 .contact {
   &__inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    @media (max-width: 767px) {
+    grid-template-columns: 1fr auto auto;
+    gap: 50px;
+    @media (max-width: 1023px) {
       grid-template-columns: 1fr;
+      gap: 20px;
     }
   }
 }
@@ -1007,6 +1021,7 @@
     color: rgb(var(--primary));
     margin-bottom: 16px;
     display: block;
+    white-space: nowrap;
   }
   &__email {
     display: block;
@@ -1015,6 +1030,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 40px;
     a {
       display: inline-flex;
       align-items: center;
@@ -1031,8 +1047,12 @@
   }
   &__photo {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 52px 1fr;
     gap: 12px;
+    img {
+      height: 52px;
+      width: 52px;
+    }
     p {
     }
   }
