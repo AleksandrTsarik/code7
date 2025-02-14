@@ -239,6 +239,9 @@ section {
 section:first-child {
   margin-top: 12px;
 }
+section:last-child {
+  margin-bottom: 60px;
+}
 @media (max-width: 1023px) {
   section {
     margin: 100px auto;
@@ -1492,7 +1495,7 @@ section:first-child {
 .footer__bg {
   background-color: rgba(20, 21, 23, 0.05);
   border-radius: 16px;
-  padding: 24px;
+  padding: 50px 24px;
 }
 .footer__row {
   color: rgba(20, 21, 23, 0.6);

@@ -151,6 +151,9 @@ section {
   &:first-child {
     margin-top: 12px;
   }
+  &:last-child {
+    margin-bottom: 60px;
+  }
   @media (max-width: 1023px) {
     margin: 100px auto;
   }
