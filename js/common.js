@@ -97,16 +97,17 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 document.addEventListener("scroll", handleScroll);
 // get a reference to our predefined button
 let scrollToTopBtn = document.querySelector(".scrollToTopBtn");
 
 function handleScroll() {
-  let scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let scrollableHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
   let srollRatio = 0.2;
 
-  if ((document.documentElement.scrollTop / scrollableHeight ) > srollRatio) {
+  if (document.documentElement.scrollTop / scrollableHeight > srollRatio) {
     //show button
     scrollToTopBtn.style.display = "flex";
   } else {
@@ -120,21 +121,20 @@ scrollToTopBtn.addEventListener("click", scrollToTop);
 function scrollToTop() {
   window.scrollTo({
     top: 0,
-    behavior: "smooth"
+    behavior: "smooth",
   });
 }
 
-
 //-----модалка по отправке
-const sendForm = document.querySelector('.js-send');
-const modalForm = document.querySelector('.js-modal');
-const modalFormClose = document.querySelector('.js-modal-close');
+const sendForm = document.querySelector(".js-send");
+const modalForm = document.querySelector(".js-modal");
+const modalFormClose = document.querySelector(".js-modal-close");
 
-sendForm.addEventListener('click', function(e) {
+sendForm.addEventListener("click", function (e) {
   e.preventDefault();
-  modalForm.classList.add('modal-open');
+  modalForm.classList.add("modal-open");
   bodyLock.classList.add("modal-open");
-})
+});
 
 document.addEventListener("click", function (event) {
   const clickInside = event.composedPath().includes(sendForm);
@@ -144,9 +144,7 @@ document.addEventListener("click", function (event) {
   }
 });
 
-
-
-"use strict";
+("use strict");
 function RandChar(prevChar) {
   if (prevChar && prevChar.ttl) {
     prevChar.ttl--;
@@ -154,7 +152,7 @@ function RandChar(prevChar) {
   }
   return {
     char: CHARS[Math.floor(Math.random() * CHARS.length)],
-    ttl: Math.floor(Math.random() * CHAR_MAX_LIFE)
+    ttl: Math.floor(Math.random() * CHAR_MAX_LIFE),
   };
 }
 function generateDrop(prev) {
@@ -185,9 +183,7 @@ function scrambleDrop(drop) {
   drop.chars.push(RandChar());
   return drop;
 }
-const CHARS = "`code7`7 code7 7".split(
-  ""
-);
+const CHARS = "`code7`7 code7 7".split("");
 const DROPS = 520;
 const DROP_MAX_LENGTH = 2;
 const CHAR_MAX_LIFE = 10;
@@ -253,3 +249,46 @@ window.addEventListener("resize", (event) => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
+
+//----animation
+
+const animItems = document.querySelectorAll("._anim__items");
+
+if (animItems.length > 0) {
+  window.addEventListener("scroll", animOnScroll);
+  function animOnScroll() {
+    for (let index = 0; index < animItems.length; index++) {
+      const animItem = animItems[index];
+      const animItemHeight = animItem.offsetHeight;
+      const animItemOffset = offset(animItem).top;
+      const animStart = 4;
+
+      let animItemPoint = window.innerHeight - animItemHeight / animStart;
+
+      if (animItemHeight > window.innerHeight) {
+        animItemPoint = window.innerHeight - window.innerHeight / animStart;
+      }
+
+      if (
+        pageYOffset > animItemOffset - animItemPoint &&
+        pageYOffset < animItemOffset + animItemHeight
+      ) {
+        animItem.classList.add("_anim-active");
+      } else {
+        if (!animItem.classList.contains("_anim_stop")) {
+          animItem.classList.remove("_anim-active");
+        }
+      }
+    }
+  }
+  function offset(el) {
+    const rect = el.getBoundingClientRect(),
+      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
+  }
+
+  setTimeout(() => {
+    animOnScroll();
+  }, 300);
+}
