@@ -645,6 +645,7 @@ section:last-child {
 .banner__inner {
   overflow: hidden;
   position: relative;
+  border-radius: 16px;
 }
 .banner__info {
   border-radius: 16px;
