@@ -183,7 +183,7 @@ function scrambleDrop(drop) {
   drop.chars.push(RandChar());
   return drop;
 }
-const CHARS = "`code7`7 code7 7".split("");
+const CHARS = "code7 7 code7 7".split("");
 const DROPS = 520;
 const DROP_MAX_LENGTH = 2;
 const CHAR_MAX_LIFE = 10;
