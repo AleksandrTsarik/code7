@@ -642,6 +642,10 @@ section:last-child {
   }
 }
 
+.banner__inner {
+  overflow: hidden;
+  position: relative;
+}
 .banner__info {
   border-radius: 16px;
   overflow: hidden;
@@ -718,6 +722,8 @@ section:last-child {
   margin-top: 24px;
   display: inline-flex;
   gap: 16px;
+  position: relative;
+  z-index: 5;
 }
 @media (max-width: 575px) {
   .banner__btns {
@@ -1649,6 +1655,16 @@ section:last-child {
 }
 .modal__text p:last-child {
   font-size: 18px;
+}
+
+#canvas {
+  position: absolute;
+  z-index: 1;
+}
+
+.banner__container {
+  overflow: hidden;
+  position: relative;
 }
 
 body {

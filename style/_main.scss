@@ -199,6 +199,10 @@
 
 //-------banner------//
 .banner {
+  &__inner {
+    overflow: hidden;
+    position: relative;
+  }
   &__info {
     border-radius: 16px;
     overflow: hidden;
@@ -263,6 +267,8 @@
     margin-top: 24px;
     display: inline-flex;
     gap: 16px;
+    position: relative;
+    z-index: 5;
     @media (max-width: 575px) {
       display: flex;
       flex-direction: column;
@@ -1217,3 +1223,13 @@
   }
 }
 //------modal finish---//
+
+#canvas {
+  position: absolute;
+  z-index: 1;
+}
+
+.banner__container {
+  overflow: hidden;
+  position: relative;
+}
