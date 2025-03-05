@@ -356,7 +356,7 @@ ScrollTrigger.create({
   start: "center center",
   end: () => main.offsetWidth / 2,
   //end: "top center",
-  markers: true,
+  markers: false,
   scrub: 2,
   duration: 0.1,
   pin: true,

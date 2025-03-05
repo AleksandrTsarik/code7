@@ -896,7 +896,7 @@ section:last-child {
   background-color: rgba(238, 238, 238, 0.5);
 }
 .mix-item__tags--primary span {
-  background-color: rgba(var(--primary), 0.5);
+  background-color: #f0ded9;
 }
 .mix-item__tags span {
   display: block;
@@ -943,40 +943,17 @@ section:last-child {
 .service__body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: ". a b" "c d .";
   gap: 24px;
   position: relative;
 }
 @media (max-width: 1023px) {
   .service__body {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "a b" "c d";
   }
 }
 @media (max-width: 767px) {
   .service__body {
     grid-template-columns: 1fr;
-    grid-template-areas: "a" "b" "c" "d";
-  }
-}
-.service__body::after {
-  content: "";
-  display: block;
-  background-image: url("../img/chain-left.webp");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
-  width: 320px;
-  height: 370px;
-  position: absolute;
-  right: 64%;
-  top: 70px;
-  transform: rotate(5deg);
-  z-index: 1;
-}
-@media (max-width: 1023px) {
-  .service__body::after {
-    display: none;
   }
 }
 .service__footer {
@@ -991,7 +968,6 @@ section:last-child {
   border-radius: 16px;
   background-color: #fff;
   padding: 24px;
-  box-shadow: 1px 2px 16px rgba(20, 21, 23, 0.1);
   display: flex;
   flex-direction: column;
   height: 370px;
@@ -1002,22 +978,9 @@ section:last-child {
     height: auto;
   }
 }
-.service-item:nth-child(1) {
-  grid-area: a;
-  -moz-column-count: 2/3;
-       column-count: 2/3;
-}
-.service-item:nth-child(2) {
-  grid-area: b;
-  -moz-column-count: 3/3;
-       column-count: 3/3;
-}
-.service-item:nth-child(3) {
-  grid-area: c;
-}
-.service-item:nth-child(4) {
-  grid-area: d;
-  background: transparent;
+.service-item:last-child {
+  background-color: transparent;
+  box-shadow: 1px 2px 16px rgba(20, 21, 23, 0.1);
 }
 .service-item__name {
   color: rgb(var(--primary));

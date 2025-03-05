@@ -456,7 +456,7 @@
     }
     &--primary {
       span {
-        background-color: rgba(var(--primary), 0.5);
+        background-color: #f0ded9;
         // color: rgb(var(--primary));
       }
     }
@@ -513,35 +513,13 @@
   &__body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: ". a b" "c d .";
     gap: 24px;
     position: relative;
     @media (max-width: 1023px) {
       grid-template-columns: 1fr 1fr;
-      grid-template-areas: "a b" "c d";
     }
     @media (max-width: 767px) {
       grid-template-columns: 1fr;
-      grid-template-areas: "a" "b" "c" "d";
-    }
-    &::after {
-      content: "";
-      display: block;
-      background-image: url("../img/chain-left.webp");
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      background-size: cover;
-      width: 320px;
-      height: 370px;
-      position: absolute;
-      //left: 90px;
-      right: 64%;
-      top: 70px;
-      transform: rotate(5deg);
-      z-index: 1;
-      @media (max-width: 1023px) {
-        display: none;
-      }
     }
   }
   &__footer {
@@ -557,7 +535,7 @@
   background-color: #fff;
   padding: 24px;
 
-  box-shadow: 1px 2px 16px rgba(20, 21, 23, 0.1);
+  // box-shadow: 1px 2px 16px rgba(20, 21, 23, 0.1);
   display: flex;
   flex-direction: column;
   height: 370px;
@@ -565,21 +543,25 @@
   @media (max-width: 767px) {
     height: auto;
   }
-  &:nth-child(1) {
-    grid-area: a;
-    column-count: 2/3;
+  &:last-child {
+    background-color: transparent;
+    box-shadow: 1px 2px 16px rgba(20, 21, 23, 0.1);
   }
-  &:nth-child(2) {
-    grid-area: b;
-    column-count: 3 /3;
-  }
-  &:nth-child(3) {
-    grid-area: c;
-  }
-  &:nth-child(4) {
-    grid-area: d;
-    background: transparent;
-  }
+  // &:nth-child(1) {
+  //   grid-area: a;
+  //   column-count: 2/3;
+  // }
+  // &:nth-child(2) {
+  //   grid-area: b;
+  //   column-count: 3 /3;
+  // }
+  // &:nth-child(3) {
+  //   grid-area: c;
+  // }
+  // &:nth-child(4) {
+  //   grid-area: d;
+  //   background: transparent;
+  // }
   &__name {
     color: rgb(var(--primary));
     margin-bottom: 16px;
