@@ -354,7 +354,7 @@ ScrollTrigger.create({
   animation: tl,
   trigger: ".mix__list-wrap",
   start: "center center",
-  end: () => main.offsetWidth / 1,
+  end: () => main.offsetWidth / 2,
   //end: "top center",
   markers: true,
   scrub: 2,

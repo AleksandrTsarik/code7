@@ -822,8 +822,6 @@ section:last-child {
 }
 .mix__list-wrap {
   overflow: hidden;
-  margin: 0 auto;
-  max-width: 80%;
   display: block;
 }
 .mix__list {
@@ -854,6 +852,8 @@ section:last-child {
   height: 100%;
   background-color: rgb(20, 21, 23);
   border-radius: 16px;
+  position: relative;
+  z-index: 10;
   margin-bottom: 16px;
 }
 .mix-item__img {
@@ -863,6 +863,8 @@ section:last-child {
   position: relative;
   margin-bottom: 16px;
   background-color: #fff;
+  max-width: 70%;
+  margin: 0 auto 16px;
 }
 @media (max-width: 767px) {
   .mix-item__img {
@@ -908,7 +910,9 @@ section:last-child {
   }
 }
 .mix-item__descr {
-  margin-top: auto;
+  margin: auto auto 0;
+  text-align: center;
+  max-width: 50%;
   background-color: rgb(20, 21, 23);
 }
 .mix-item__text {
