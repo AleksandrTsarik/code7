@@ -61,13 +61,14 @@ const main = document.querySelector(".mix__list");
 ScrollTrigger.create({
   animation: tl,
   trigger: ".mix__list-wrap",
-  start: "10% 20%",
-  end: () => main.offsetWidth / 2,
-  //end: "top center",
-  markers: false,
-  scrub: 2,
-  duration: 0.1,
+  start: "20% 20%",
+  //end: () => main.offsetWidth / 2,
+  end: "bottom 20%",
+  markers: true,
+  scrub: 10,
+  duration: 2,
   pin: true,
+  stagger: 1
 });
 
 
