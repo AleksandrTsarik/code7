@@ -78,7 +78,7 @@ gsap.from('.service-item', {
     trigger: '.service__body',
     start: '-30% center',
     end: '60% bottom',
-    markers: true,
+    markers: false,
     scrub: 2,
     duration: 10
   },
