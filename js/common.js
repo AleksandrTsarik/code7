@@ -55,6 +55,7 @@ tl.fromTo(
     x: '-500%'
   }
 );
+
 const main = document.querySelector(".mix__list");
 
 ScrollTrigger.create({
@@ -63,12 +64,30 @@ ScrollTrigger.create({
   start: "10% 20%",
   end: () => main.offsetWidth / 2,
   //end: "top center",
-  markers: true,
+  markers: false,
   scrub: 2,
   duration: 0.1,
   pin: true,
 });
 
+
+// animation cards
+
+gsap.from('.service-item', {
+  scrollTrigger: {
+    trigger: '.service__body',
+    start: '-30% center',
+    end: '60% bottom',
+    markers: true,
+    scrub: 2,
+    duration: 10
+  },
+  scale: 0.5,
+  opacity: 0.1,
+  transformOrign: 'top center',
+  ease: 'none',
+  stagger: 1
+})
 
 
 
