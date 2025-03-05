@@ -828,8 +828,8 @@ section:last-child {
   overflow: hidden;
   margin: 0 auto;
   position: relative;
-  width: 600%;
-  height: 700px;
+  width: 600vw;
+  height: 90vh;
   display: flex;
   justify-content: center;
 }
@@ -862,8 +862,6 @@ section:last-child {
   transition: 1s;
   position: relative;
   margin-bottom: 16px;
-  background-color: #fff;
-  max-width: 70%;
   margin: 0 auto 16px;
 }
 @media (max-width: 767px) {
@@ -910,7 +908,7 @@ section:last-child {
   }
 }
 .mix-item__descr {
-  margin: auto auto 0;
+  margin: 0 auto 0;
   text-align: center;
   max-width: 50%;
   background-color: rgb(20, 21, 23);
@@ -991,6 +989,19 @@ section:last-child {
 }
 .service-item__text p {
   margin-bottom: 1em;
+}
+.service-item__more button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  background-color: transparent;
+  border-radius: 50px;
+  border: solid 1px rgb(var(--primary));
+  padding: 12px 26px;
+  color: rgb(var(--primary));
+  font-size: 16px;
+  cursor: pointer;
 }
 .service-item__tags {
   display: flex;

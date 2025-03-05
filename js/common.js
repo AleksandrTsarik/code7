@@ -1,4 +1,81 @@
 "use strict";
+
+
+//----GSAP
+const tl = gsap.timeline();
+tl.fromTo(
+  ".mix-item--second",
+  {
+    x: "-100%",
+    y: "100%",
+  },
+  {
+    y: 0,
+  });
+tl.fromTo(
+  ".mix-item--third",
+  {
+    x: "-100%",
+  },
+  {
+    x: "-200%",
+  }
+);
+tl.fromTo(
+  ".mix-item--fourth",
+  {
+    opacity: 0,
+    x: "-400%",
+  },
+  {
+    opacity: 1,
+    x: "-300%",
+    y: 0,
+  }
+);
+tl.fromTo(
+  ".mix-item--fifth",
+  {
+    x: "-400%",
+    y: "-100%",
+  },
+  {
+    y: 0,
+    x: '-400%'
+  }
+);
+tl.fromTo(
+  ".mix-item--sixth",
+  {
+    x: "-500%",
+    y: "100%",
+  },
+  {
+    y: 0,
+    x: '-500%'
+  }
+);
+const main = document.querySelector(".mix__list");
+
+ScrollTrigger.create({
+  animation: tl,
+  trigger: ".mix__list-wrap",
+  start: "10% 20%",
+  end: () => main.offsetWidth / 2,
+  //end: "top center",
+  markers: true,
+  scrub: 2,
+  duration: 0.1,
+  pin: true,
+});
+
+
+
+
+
+
+
+
 const buttonSelect = document.querySelector(".js-menu");
 const menuSelect = document.querySelector(".js-menu-drop");
 const bodyLock = document.querySelector("body");
@@ -294,71 +371,4 @@ if (animItems.length > 0) {
   }, 300);
 }
 
-//----GSAP
-const tl = gsap.timeline();
-tl.fromTo(
-  ".mix-item--second",
-  {
-    x: "-100%",
-    y: "100%",
-  },
-  {
-    y: 0,
-  });
-tl.fromTo(
-  ".mix-item--third",
-  {
-    x: "-100%",
-  },
-  {
-    x: "-200%",
-  }
-);
-tl.fromTo(
-  ".mix-item--fourth",
-  {
-    opacity: 0,
-    x: "-400%",
-  },
-  {
-    opacity: 1,
-    x: "-300%",
-    y: 0,
-  }
-);
-tl.fromTo(
-  ".mix-item--fifth",
-  {
-    x: "-400%",
-    y: "-100%",
-  },
-  {
-    y: 0,
-    x: '-400%'
-  }
-);
-tl.fromTo(
-  ".mix-item--sixth",
-  {
-    x: "-500%",
-    y: "100%",
-  },
-  {
-    y: 0,
-    x: '-500%'
-  }
-);
-const main = document.querySelector(".mix__list");
-
-ScrollTrigger.create({
-  animation: tl,
-  trigger: ".mix__list-wrap",
-  start: "center center",
-  end: () => main.offsetWidth / 2,
-  //end: "top center",
-  markers: false,
-  scrub: 2,
-  duration: 0.1,
-  pin: true,
-});
 
