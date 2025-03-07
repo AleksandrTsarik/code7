@@ -1,101 +1,231 @@
 "use strict";
 
-
-//----GSAP
 const tl = gsap.timeline();
+// //----GSAP
+// const tl = gsap.timeline();
+// tl.fromTo(
+//   ".mix-item--second",
+//   { x: "-100%", y: "100%", force3D: true },
+//   { y: 0, force3D: true,  }
+// );
+// tl.fromTo(
+//   ".mix-item--third",
+//   {
+//     x: "-100%",
+//   },
+//   {
+//     x: "-200%",
+//   },
+
+// );
+// tl.fromTo(
+//   ".mix-item--fourth",
+//   {
+//     opacity: 0,
+//     x: "-400%",
+//   },
+//   {
+//     opacity: 1,
+//     x: "-300%",
+//     y: 0,
+//   },
+
+// );
+// tl.fromTo(
+//   ".mix-item--fifth",
+//   {
+//     x: "-400%",
+//     y: "-100%",
+//   },
+//   {
+//     y: 0,
+//     x: '-400%'
+//   }
+// );
+// tl.fromTo(
+//   ".mix-item--sixth",
+//   {
+//     x: "-500%",
+//     y: "100%",
+//   },
+//   {
+//     y: 0,
+//     x: '-500%'
+//   }
+// );
+
+// const main = document.querySelector(".mix__list");
+
+// ScrollTrigger.create({
+//   animation: tl,
+//   trigger: ".mix__list-wrap",
+//   start: "center center",
+//   //end: () => `+=${main.offsetWidth}`,
+//   end: () => main.offsetWidth / 2,
+//   //end: "bottom top+=100",
+//   markers: true,
+//   scrub: 1,
+//   duration: 1,
+//   pin: true,
+//   pinSpacing: false, // Отключаем автоматическое добавление паддинга
+//   pinReparent: true, // Reparents the pinned element to the body
+//   stagger: 1,
+//   anticipatePin: 1, // Prepares the pin earlier for smoother pinning
+
+//   preventOverlaps: true,
+//   fastScrollEnd: true,
+// });
+
+// function handleMixScroll() {
+//   const main = document.querySelector(".mix__list");
+
+//   if (!main) return;
+//   const triggerOptions = {
+//     animation: tl,
+//     trigger: ".mix__list-wrap",
+//     start: "center center",
+//     // Используем динамический end с функцией
+//     end: () => main.offsetWidth / 2,
+//     markers: true,
+//     scrub: 1,
+//     pin: true,
+//     pinSpacing: false, // Отключаем автоматическое добавление паддинга
+//   };
+
+//   const st = ScrollTrigger.create(triggerOptions);
+
+//   window.addEventListener('resize', () => {
+//     st.refresh();
+//   });
+// }
+
+// function handleDomContentLoaded() {
+//   handleMixScroll();
+// }
 tl.fromTo(
-  ".mix-item--second",
+  ".anim-title",
   {
-    x: "-100%",
-    y: "100%",
-  },
-  {
-    y: 0,
-  });
-tl.fromTo(
-  ".mix-item--third",
-  {
-    x: "-100%",
-  },
-  {
-    x: "-200%",
-  }
-);
-tl.fromTo(
-  ".mix-item--fourth",
-  {
+    y: "50%",
     opacity: 0,
-    x: "-400%",
+
+    //scale: 0.5
   },
   {
+    y: 0,
+    scale: 1,
     opacity: 1,
-    x: "-300%",
-    y: 0,
-  }
-);
-tl.fromTo(
-  ".mix-item--fifth",
-  {
-    x: "-400%",
-    y: "-100%",
+    duration: 1,
   },
-  {
-    y: 0,
-    x: '-400%'
-  }
-);
-tl.fromTo(
-  ".mix-item--sixth",
-  {
-    x: "-500%",
-    y: "100%",
+  0.5
+)
+  .fromTo(
+    ".banner__text",
+    {
+      y: "50%",
+      opacity: 0,
+    },
+    {
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      duration: 1,
+    }
+  )
+  .fromTo(
+    ".anim-img",
+    {
+      x: "50%",
+      opacity: 0,
+    },
+    {
+      x: 0,
+      scale: 1,
+      opacity: 1,
+      duration: 1,
+    }
+  )
+  .fromTo(
+    ".banner__btns",
+    {
+      scale: 0.2,
+      opacity: 0,
+    },
+    {
+      scale: 1,
+      opacity: 1,
+      duration: 1,
+    }
+  );
+
+//anim banner bg
+gsap.to(".banner__bg img", {
+  scrollTrigger: {
+    trigger: ".banner",
+    markers: false,
+    start: "top top",
+    scrub: 1,
   },
-  {
-    y: 0,
-    x: '-500%'
-  }
-);
-
-const main = document.querySelector(".mix__list");
-
-ScrollTrigger.create({
-  animation: tl,
-  trigger: ".mix__list-wrap",
-  start: "10% 20%",
-  end: () => main.offsetWidth / 2,
-  //end: "bottom 20%",
-  markers: true,
-  scrub: 1,
-  duration: 1,
-  pin: true,
-  stagger: 1
+  scale: 1.2,
+});
+gsap.to(".banner__info", {
+  scrollTrigger: {
+    trigger: ".banner",
+    markers: false,
+    start: "90% 50%",
+    scrub: 1,
+    duration: 2,
+  },
+  y: "50%",
+  opacity: 0.5,
 });
 
-
 // animation cards
-
-gsap.from('.service-item', {
+gsap.from(".service-item", {
   scrollTrigger: {
-    trigger: '.service__body',
-    start: '-30% center',
-    end: '60% bottom',
+    trigger: ".service__body",
+    start: "-30% center",
+    end: "60% bottom",
     markers: false,
     scrub: 2,
-    duration: 10
+    duration: 10,
   },
   scale: 0.5,
   opacity: 0.1,
-  transformOrign: 'top center',
-  ease: 'none',
-  stagger: 1
-})
+  transformOrign: "top center",
+  ease: "none",
+  stagger: 1,
+});
+
+// animation cards offer
+gsap.from(".offer-item", {
+  scrollTrigger: {
+    trigger: ".offer__body",
+    start: "-50% center",
+    end: "70% bottom",
+    markers: false,
+    scrub: 3,
+    duration: 9,
+  },
+  scale: 0.6,
+  opacity: 0.15,
+  ease: "none",
+  stagger: 1,
+});
+
+
+//btn animation
+let btnAnimation = () => {
+  const tlMessageBtn = gsap.timeline({defaults: {duration: .3}, repeat: -1, repeatDelay: 3});
+  tlMessageBtn.to('.service-item__more button',{rotate: -5, scale: 1.1})
+  .to('.service-item__more button',{rotate: 5, scale: 1})
+  .to('.service-item__more button',{rotate: 0,scale: 1.1})
+  return tlMessageBtn;
+}
 
 
 
 
-
-
-
+btnAnimation();
 const buttonSelect = document.querySelector(".js-menu");
 const menuSelect = document.querySelector(".js-menu-drop");
 const bodyLock = document.querySelector("body");
@@ -390,5 +520,3 @@ if (animItems.length > 0) {
     animOnScroll();
   }, 300);
 }
-
-
