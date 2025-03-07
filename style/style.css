@@ -1664,6 +1664,11 @@ section:last-child {
 .modal-smm-item {
   position: relative;
 }
+@media (max-width: 767px) {
+  .modal-smm-item:nth-child(2) {
+    margin-top: 50px;
+  }
+}
 .modal-smm-item__inner {
   background-color: rgb(238, 238, 238);
   padding: 16px;

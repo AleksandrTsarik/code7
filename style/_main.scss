@@ -1260,6 +1260,11 @@
 }
 .modal-smm-item {
   position: relative;
+  @media (max-width: 767px) {
+    &:nth-child(2) {
+      margin-top: 50px;
+    }
+  }
   &__inner {
     background-color: rgba(238, 238, 238, 1);
     padding: 16px;
