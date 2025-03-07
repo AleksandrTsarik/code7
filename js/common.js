@@ -222,10 +222,11 @@ let btnAnimation = () => {
   return tlMessageBtn;
 }
 
-
-
-
 btnAnimation();
+
+
+
+
 const buttonSelect = document.querySelector(".js-menu");
 const menuSelect = document.querySelector(".js-menu-drop");
 const bodyLock = document.querySelector("body");
@@ -246,6 +247,10 @@ document.addEventListener("click", function (event) {
     bodyLock.classList.remove("lock");
   }
 });
+
+
+
+
 
 //---accordions
 const accordion = document.querySelectorAll(".accordion-modern");
@@ -372,6 +377,60 @@ document.addEventListener("click", function (event) {
     bodyLock.classList.remove("modal-open");
   }
 });
+
+//-----modal smm
+
+const btnSmm = document.querySelector('.js-smm');
+const modalSmm = document.querySelector('.modal-smm');
+const modalSmmClose = document.querySelector('.modal-smm__close');
+const lock = document.body; // Assuming you want to lock the body
+
+function openModal() {
+  modalSmm.classList.add('modal-open');
+  lock.classList.add("modal-open");
+}
+function closeModal() {
+  modalSmm.classList.remove("modal-open");
+  lock.classList.remove("modal-open");
+}
+btnSmm.addEventListener('click', openModal);
+modalSmmClose.addEventListener('click', closeModal);
+document.addEventListener("click", function(event) {
+  if (!modalSmm.classList.contains('modal-open')) return;
+  const isClickInsideModal = modalSmm.contains(event.target);
+  const isClickOnButton = btnSmm.contains(event.target);
+  
+  if (!isClickInsideModal && !isClickOnButton) {
+    closeModal();
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape' && modalSmm.classList.contains('modal-open')) {
+    closeModal();
+  }
+});
+
+// const btnSmm = document.querySelector('.js-smm')
+// const modalSmm = document.querySelector('.modal-smm')
+// const modalSmmClose = document.querySelector('.modal-smm__close')
+// const lock = document.querySelector("body");
+
+// btnSmm.addEventListener('click', function() {
+//   btnSmm.classList.add('modal-open');
+//   modalSmm.classList.add('modal-open');
+//   //lock.classList.add("modal-open");
+// })
+
+// document.addEventListener("click", function (event) {
+//   const clickInside = event.composedPath().includes(sendForm);
+//   if (!clickInside && !sendForm.contains(event.target)) {
+//     modalSmm.classList.remove("modal-open");
+//     btnSmm.classList.remove("modal-open");
+//     modalSmmClose.classList.remove("modal-open");
+//     //lock.classList.remove("modal-open");
+//   }
+// });
 
 //----canvas
 // function RandChar(prevChar) {
