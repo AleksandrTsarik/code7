@@ -974,6 +974,9 @@ section:last-child {
 .service-item__text p {
   margin-bottom: 1em;
 }
+.service-item__head {
+  margin-bottom: 20px;
+}
 .service-item__more button {
   display: flex;
   align-items: center;
