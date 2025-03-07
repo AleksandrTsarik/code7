@@ -1398,7 +1398,7 @@ section:last-child {
 
 .contact__inner {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr 1fr;
   gap: 50px;
 }
 @media (max-width: 1023px) {
@@ -1425,9 +1425,8 @@ section:last-child {
 }
 .contact-item__social {
   display: flex;
-  flex-direction: column;
   gap: 10px;
-  margin-top: 40px;
+  margin: 30px 0;
 }
 .contact-item__social a {
   display: inline-flex;
