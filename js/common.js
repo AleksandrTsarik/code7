@@ -579,3 +579,37 @@ if (animItems.length > 0) {
     animOnScroll();
   }, 300);
 }
+
+
+
+
+document.querySelector('.js-send').addEventListener('click', function(e) {
+  e.preventDefault();
+  
+  const form = this.closest('form');
+  const formData = new FormData(form);
+  
+  // Get form values
+  formData.append('name', form.querySelector('input[type="text"]').value);
+  formData.append('phone', form.querySelector('input[type="tel"]').value);
+  formData.append('choice', form.querySelector('input[name="choice"]:checked')?.value || '');
+  formData.append('message', form.querySelector('textarea').value);
+
+  fetch('../api/mailer.php', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.success) {
+          alert('Спасибо! Ваше сообщение отправлено.');
+          form.reset();
+      } else {
+          alert('Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.');
+      }
+  })
+  .catch(error => {
+      console.error('Error:', error);
+      alert('Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.');
+  });
+});
