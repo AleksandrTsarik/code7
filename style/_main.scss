@@ -898,6 +898,9 @@
     font-size: 28px;
     font-weight: 500;
     padding-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   &__descr {
     p {

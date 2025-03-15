@@ -1303,6 +1303,9 @@ section:last-child {
   font-size: 28px;
   font-weight: 500;
   padding-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .offer-item__descr p {
   font-size: 16px;
