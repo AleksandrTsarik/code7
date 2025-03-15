@@ -532,7 +532,7 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  height: 370px;
+  min-height: 370px;
   overflow: hidden;
   @media (max-width: 767px) {
     height: auto;
