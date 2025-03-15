@@ -923,37 +923,63 @@
                                             вместе?</h2>
                                     </div>
                                     <div class="job__block">
-                                        <!-- document.querySelector('.js-send').addEventListener('click', function(e) {
-                                        e.preventDefault();
-
-                                        const form = this.closest('form');
-                                        const formData = new FormData(form);
-
-                                        // Get form values
-                                        formData.append('name', form.querySelector('input[type="text"]').value);
-                                        formData.append('phone', form.querySelector('input[type="tel"]').value);
-                                        formData.append('choice',
-                                        form.querySelector('input[name="choice"]:checked')?.value || '');
-                                        formData.append('message', form.querySelector('textarea').value);
-
-                                        fetch('path/to/your/mailer.php', {
-                                        method: 'POST',
-                                        body: formData
-                                        })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                        if (data.success) {
-                                        alert('Спасибо! Ваше сообщение отправлено.');
-                                        form.reset();
-                                        } else {
-                                        alert('Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.');
-                                        }
-                                        })
-                                        .catch(error => {
-                                        console.error('Error:', error);
-                                        alert('Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.');
-                                        });
-                                        }); -->
+                                        <form>
+                                            <div class="job__offer t-20">
+                                                <p>Мы на связи 24/7</p>
+                                                <p>Оперативно обработаем информацию по Вашему проекту и свяжемся с Вами
+                                                    для
+                                                    уточнения деталей и начала работы.</p>
+                                                <p>Расскажите о Вашем проекте или свяжитесь с нами по номеру
+                                                    <a href="tel:+79090058585"> +7 (909) 005-85-85</a>
+                                                </p>
+                                            </div>
+                                            <div class="form">
+                                                <div class="form__block">
+                                                    <div class="form__inputs">
+                                                        <label>
+                                                            <input type="text" placeholder="*Ваше имя " required>
+                                                        </label>
+                                                        <label>
+                                                            <input type="tel" value="" class="phone-input"
+                                                                placeholder="+7 (000) 000-00-00">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form__block">
+                                                    <div class="form__text">Как мы можем с Вами связаться?</div>
+                                                    <!-- <div class="form__radio form-radio">
+                                                        <label class="form-radio__label">
+                                                            <input type="radio" name="choice" id=""
+                                                                class="form-radio__input">
+                                                            <span class="form-radio__checked"></span>
+                                                            <span class="form-radio__name">Telegram</span>
+                                                        </label>
+                                                        <label class="form-radio__label">
+                                                            <input type="radio" name="choice" id=""
+                                                                class="form-radio__input">
+                                                            <span class="form-radio__checked"></span>
+                                                            <span class="form-radio__name">Whats App</span>
+                                                        </label>
+                                                        <label class="form-radio__label">
+                                                            <input type="radio" name="choice" id=""
+                                                                class="form-radio__input">
+                                                            <span class="form-radio__checked"></span>
+                                                            <span class="form-radio__name">Звонок</span>
+                                                        </label>
+                                                    </div> -->
+                                                    <div class="form__textarea">
+                                                        <textarea name="" id=""></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form__send">
+                                                    <button class="btn btn-dark js-send">Отправить</button>
+                                                </div>
+                                                <div class="form__finish">
+                                                    Нажимая на кнопку, Вы соглашаетесь <a href="#"> с Политикой обратоки
+                                                        персональных данных</a>
+                                                </div>
+                                            </div>
+                                        </form>
 
                                     </div>
                                 </div>
@@ -1117,8 +1143,9 @@
                                 <li class="modal-smm-item__no">продвижение аккаунта</li>
                                 <li class="modal-smm-item__no">закупка рекламы</li>
                             </ul>
+
+                            <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
                         </div>
-                        <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
                     </div>
 
                     <div class="modal-smm-item">

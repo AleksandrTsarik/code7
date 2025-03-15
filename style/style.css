@@ -1672,12 +1672,18 @@ section:last-child {
     margin-top: 50px;
   }
 }
+.modal-smm-item__btn {
+  width: 100%;
+  margin: top auto 0;
+}
 .modal-smm-item__inner {
   background-color: rgb(238, 238, 238);
   padding: 16px;
   border-radius: 16px;
   height: 100%;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
 }
 .modal-smm-item__choice {
   background-color: rgba(var(--primary));
@@ -1702,6 +1708,10 @@ section:last-child {
   text-align: center;
   padding: 0 20px 16px;
   white-space: nowrap;
+}
+.modal-smm-item__list {
+  flex-grow: 1;
+  margin-bottom: 10px;
 }
 .modal-smm-item__list li {
   display: flex;
