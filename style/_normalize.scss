@@ -263,6 +263,13 @@ section {
   &__send {
     margin-top: 14px;
     margin-bottom: 12px;
+    display: block;
+    input {
+      margin-top: 15px 0 12px;
+      display: block;
+      width: 100%;
+      cursor: pointer;
+    }
     button {
       width: 100%;
       display: block;

@@ -212,21 +212,20 @@ gsap.from(".offer-item", {
   stagger: 1,
 });
 
+
 //btn animation
 let btnAnimation = () => {
-  const tlMessageBtn = gsap.timeline({
-    defaults: { duration: 0.3 },
-    repeat: -1,
-    repeatDelay: 3,
-  });
-  tlMessageBtn
-    .to(".service-item__more button", { rotate: -5, scale: 1.1 })
-    .to(".service-item__more button", { rotate: 5, scale: 1 })
-    .to(".service-item__more button", { rotate: 0, scale: 1.1 });
+  const tlMessageBtn = gsap.timeline({defaults: {duration: .3}, repeat: -1, repeatDelay: 3});
+  tlMessageBtn.to('.service-item__more button',{rotate: -5, scale: 1.1})
+  .to('.service-item__more button',{rotate: 5, scale: 1})
+  .to('.service-item__more button',{rotate: 0,scale: 1.1})
   return tlMessageBtn;
-};
+}
 
 btnAnimation();
+
+
+
 
 const buttonSelect = document.querySelector(".js-menu");
 const menuSelect = document.querySelector(".js-menu-drop");
@@ -248,6 +247,10 @@ document.addEventListener("click", function (event) {
     bodyLock.classList.remove("lock");
   }
 });
+
+
+
+
 
 //---accordions
 const accordion = document.querySelectorAll(".accordion-modern");
@@ -377,33 +380,33 @@ document.addEventListener("click", function (event) {
 
 //-----modal smm
 
-const btnSmm = document.querySelector(".js-smm");
-const modalSmm = document.querySelector(".modal-smm");
-const modalSmmClose = document.querySelector(".modal-smm__close");
+const btnSmm = document.querySelector('.js-smm');
+const modalSmm = document.querySelector('.modal-smm');
+const modalSmmClose = document.querySelector('.modal-smm__close');
 const lock = document.body; // Assuming you want to lock the body
 
 function openModal() {
-  modalSmm.classList.add("modal-open");
+  modalSmm.classList.add('modal-open');
   lock.classList.add("modal-open");
 }
 function closeModal() {
   modalSmm.classList.remove("modal-open");
   lock.classList.remove("modal-open");
 }
-btnSmm.addEventListener("click", openModal);
-modalSmmClose.addEventListener("click", closeModal);
-document.addEventListener("click", function (event) {
-  if (!modalSmm.classList.contains("modal-open")) return;
+btnSmm.addEventListener('click', openModal);
+modalSmmClose.addEventListener('click', closeModal);
+document.addEventListener("click", function(event) {
+  if (!modalSmm.classList.contains('modal-open')) return;
   const isClickInsideModal = modalSmm.contains(event.target);
   const isClickOnButton = btnSmm.contains(event.target);
-
+  
   if (!isClickInsideModal && !isClickOnButton) {
     closeModal();
   }
 });
 
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape" && modalSmm.classList.contains("modal-open")) {
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape' && modalSmm.classList.contains('modal-open')) {
     closeModal();
   }
 });
@@ -579,34 +582,35 @@ if (animItems.length > 0) {
 
 
 
-// Отправка данных на сервер
-function send(event, php) {
-  console.log("Отправка запроса");
-  event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-  var req = new XMLHttpRequest();
-  req.open("POST", php, true);
-  req.onload = function () {
-    if (req.status >= 200 && req.status < 400) {
-      json = JSON.parse(this.response); // Ебанный internet explorer 11
-      console.log(json);
 
-      // ЗДЕСЬ УКАЗЫВАЕМ ДЕЙСТВИЯ В СЛУЧАЕ УСПЕХА ИЛИ НЕУДАЧИ
-      if (json.result == "success") {
-        // Если сообщение отправлено
-        alert("Сообщение отправлено");
+document.querySelector('.js-send').addEventListener('click', function(e) {
+  e.preventDefault();
+  
+  const form = this.closest('form');
+  const formData = new FormData(form);
+  
+  // Get form values
+  formData.append('name', form.querySelector('input[type="text"]').value);
+  formData.append('phone', form.querySelector('input[type="tel"]').value);
+  formData.append('message', form.querySelector('textarea').value);
+
+  fetch('../mailer.php', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.success) {
+          alert('Спасибо! Ваше сообщение отправлено.');
+          form.reset();
       } else {
-        // Если произошла ошибка
-        alert("Ошибка. Сообщение не отправлено");
+          alert('Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.');
       }
-      // Если не удалось связаться с php файлом
-    } else {
-      alert("Ошибка сервера. Номер: " + req.status);
-    }
-  };
+  })
+  .catch(error => {
+      console.error('Error:', error);
+      console.error('testeteteste');
 
-  // Если не удалось отправить запрос. Стоит блок на хостинге
-  req.onerror = function () {
-    alert("Ошибка отправки запроса");
-  };
-  req.send(new FormData(event.target));
-}
+      alert('Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.');
+  });
+});

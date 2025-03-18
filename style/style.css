@@ -352,6 +352,13 @@ section:last-child {
 .form__send {
   margin-top: 14px;
   margin-bottom: 12px;
+  display: block;
+}
+.form__send input {
+  margin-top: 15px 0 12px;
+  display: block;
+  width: 100%;
+  cursor: pointer;
 }
 .form__send button {
   width: 100%;
