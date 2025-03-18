@@ -1,4 +1,3 @@
-// Accordion functionality
 class Accordion {
     constructor(element) {
         this.element = element;
@@ -11,10 +10,7 @@ class Accordion {
     }
 
     init() {
-        // Add click event listener
         this.head.addEventListener('click', () => this.toggle());
-        
-        // Set initial state
         this.isOpen = this.head.classList.contains('open');
         this.updateState();
     }
@@ -35,7 +31,6 @@ class Accordion {
     }
 }
 
-// Initialize all accordions
 document.addEventListener('DOMContentLoaded', () => {
     const accordions = document.querySelectorAll('.accordion');
     accordions.forEach(accordion => new Accordion(accordion));

@@ -1,58 +1,70 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+// Файлы phpmailer
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
+require 'phpmailer/Exception.php';
 
-require 'path/to/PHPMailer/src/Exception.php';
-require 'path/to/PHPMailer/src/PHPMailer.php';
-require 'path/to/PHPMailer/src/SMTP.php';
+// Переменные, которые отправляет пользователь
+$name = $_POST['name'];
+$email = $_POST['email'];
+$text = $_POST['text'];
+$file = $_FILES['myfile'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data
-    $name = $_POST['name'] ?? '';
-    $phone = $_POST['phone'] ?? '';
-    $contactMethod = $_POST['choice'] ?? '';
-    $message = $_POST['message'] ?? '';
+// Формирование самого письма
+$title = "New message from CodeSeven";
+$body = "
+<h2>Сообщение</h2>
+<b>Имя:</b> $name<br>
+<b>Телефон:</b> $phone<br><br>
+<b>Текст:</b><br>$text
+";
 
-    // Create new PHPMailer instance
-    $mail = new PHPMailer(true);
+// Настройки PHPMailer
+$mail = new PHPMailer\PHPMailer\PHPMailer();
+try {
+    $mail->isSMTP();   
+    $mail->CharSet = "UTF-8";
+    $mail->SMTPAuth   = true;
+    //$mail->SMTPDebug = 2;
+    $mail->Debugoutput = function($str, $level) {$GLOBALS['status'][] = $str;};
 
-    try {
-        // Server settings
-        $mail->isSMTP();
-        $mail->Host = 'smtp.your-email-server.com';  // Specify your SMTP server
-        $mail->SMTPAuth = true;
-        $mail->Username = 'your-email@domain.com';    // SMTP username
-        $mail->Password = 'your-password';            // SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+    // Настройки вашей почты
+    $mail->Host       = 'smtp.timeweb.ru'; // SMTP сервера вашей почты
+    $mail->Username   = 'info.codeseven.ru'; // Логин на почте
+    $mail->Password   = 'mg208y92c2'; // Пароль на почте
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port       = 465;
+    $mail->setFrom('info@codeseven.ru', 'CodeSeven'); // Адрес самой почты и имя отправителя
 
-        // Recipients
-        $mail->setFrom('no-reply@no-reply', 'Contact Form');
-        $mail->addAddress('recipient@example.com');     // Add recipient email
+    // Получатель письма
+    $mail->addAddress('info@codeseven.ru');  
 
-        // Content
-        $mail->isHTML(true);
-        $mail->CharSet = 'UTF-8';
-        $mail->Subject = 'Новая заявка с сайта';
-        
-        // Email body
-        $emailBody = "
-            <h2>Новая заявка с формы обратной связи</h2>
-            <p><strong>Имя:</strong> {$name}</p>
-            <p><strong>Телефон:</strong> {$phone}</p>
-            <p><strong>Предпочитаемый способ связи:</strong> {$contactMethod}</p>
-            <p><strong>Сообщение:</strong><br>{$message}</p>
-        ";
+    // Прикрипление файлов к письму
+//if (!empty($file['name'][0])) {
+//    for ($ct = 0; $ct < count($file['tmp_name']); $ct++) {
+//        $uploadfile = tempnam(sys_get_temp_dir(), sha1($file['name'][$ct]));
+//        $filename = $file['name'][$ct];
+//        if (move_uploaded_file($file['tmp_name'][$ct], $uploadfile)) {
+//            $mail->addAttachment($uploadfile, $filename);
+//            $rfile[] = "Файл $filename прикреплён";
+//        } else {
+//            $rfile[] = "Не удалось прикрепить файл $filename";
+//        }
+//    }   
+//}
+// Отправка сообщения
+$mail->isHTML(true);
+$mail->Subject = $title;
+$mail->Body = $body;    
 
-        $mail->Body = $emailBody;
-        $mail->AltBody = strip_tags($emailBody);
+// Проверяем отравленность сообщения
+if ($mail->send()) {$result = "success";} 
+else {$result = "error";}
 
-        $mail->send();
-        echo json_encode(['success' => true, 'message' => 'Сообщение успешно отправлено']);
-    } catch (Exception $e) {
-        echo json_encode(['success' => false, 'message' => "Ошибка отправки: {$mail->ErrorInfo}"]);
-    }
-} else {
-    echo json_encode(['success' => false, 'message' => 'Неверный метод запроса']);
+} catch (Exception $e) {
+    $result = "error";
+    $status = "Сообщение не было отправлено. Причина ошибки: {$mail->ErrorInfo}";
 }
-?>
+
+// Отображение результата
+echo json_encode(["result" => $result, "resultfile" => $rfile, "status" => $status]);
