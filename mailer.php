@@ -7,34 +7,28 @@ require 'PHPMailer.php';
 require 'SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data
+
     $name = $_POST['name'] ?? '';
     $phone = $_POST['phone'] ?? '';
     $message = $_POST['message'] ?? '';
-
-    // Create new PHPMailer instance
     $mail = new PHPMailer(true);
 
     try {
-        // Server settings
         $mail->isSMTP();
-        $mail->Host = 'smtp.timeweb.ru';  // Specify your SMTP server
+        $mail->Host = 'smtp.timeweb.ru';
         $mail->SMTPAuth = true;
-        $mail->Username = 'info@codeseven.ru';    // SMTP username
-        $mail->Password = 'mg208y92c2';            // SMTP password
+        $mail->Username = 'info@codeseven.ru';
+        $mail->Password = 'mg208y92c2';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
 
-        // Recipients
-        $mail->setFrom('no-reply@no-reply', 'Contact Form');
-        $mail->addAddress('info@codeseven.ru');     // Add recipient email
+        $mail->setFrom('info@codeseven.ru', 'Contact Form');
+        $mail->addAddress('info@codeseven.ru');
 
-        // Content
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
         $mail->Subject = 'Новая заявка с сайта';
         
-        // Email body
         $emailBody = "
             <h2>Новая заявка с формы обратной связи</h2>
             <p><strong>Имя:</strong> {$name}</p>
