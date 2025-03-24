@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p><strong>Имя:</strong> {$name}</p>
             <p><strong>Телефон:</strong> {$phone}</p>
             <p><strong>E-mail:</strong><br>{$email}</p>
-            <p><strong>Тфариф:</strong><br>{$tariff}</p>
+            <p><strong>Тариф:</strong><br>{$tariff}</p>
         ";
 
         $mail->Body = $emailBody;

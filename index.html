@@ -700,7 +700,7 @@
                                             вместе?</h2>
                                     </div>
                                     <div class="job__block">
-                                        <form method="POST">
+                                        <form method="POST" class="js-job-form">
                                             <div class="job__offer t-20">
                                                 <p>Мы на связи 24/7</p>
                                                 <p>Оперативно обработаем информацию по Вашему проекту и свяжемся с Вами
@@ -718,7 +718,7 @@
                                                         </label>
                                                         <label>
                                                             <input type="tel" value="" class="phone-input"
-                                                                placeholder="+7 (000) 000-00-00">
+                                                                placeholder="+7 (000) 000-00-00" required>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -877,7 +877,7 @@
         </footer>
 
         <div class="modal modal-smm">
-            <div class="modal__overlay"></div>
+            <div class="modal__overlay modal-smm__overlay"></div>
             <div class="modal-smm__wrap modal__wrap">
                 <div class="modal-smm__close"></div>
                 <div class="modal-smm__title">Пакеты услуг SMM</div>
@@ -969,28 +969,29 @@
         </div>
 
         <div class="modal modal-send">
-            <div class="modal__overlay"></div>
+            <div class="modal__overlay modal-send__overlay"></div>
             <div class="modal-send__wrap modal__wrap">
                 <div class="modal-send__close"></div>
                 <div class="modal-send__title">Оформить пакет</div>
                 <div class="modal-send__subtitle">Заполните данные, и мы свяжемся с Вами в ближайшее время для уточнения
                     деталей и подтверждения оплаты.</div>
-                <form method="post">
+                <form method="post" class="js-form-tariff">
                     <div class="modal-send__form">
                         <div class="modal-send__inputs">
                             <div class="modal-send__input">
                                 <label>
-                                    <input type="text" placeholder="Ваше имя" name="name">
+                                    <input type="text" placeholder="Ваше имя" name="name" required>
                                 </label>
                             </div>
                             <div class="modal-send__input">
                                 <label>
-                                    <input type="tel" placeholder="Номер телефона" class="phone-input" name="phone">
+                                    <input type="tel" placeholder="Номер телефона" class="phone-input" name="phone"
+                                        required>
                                 </label>
                             </div>
                             <div class="modal-send__input">
                                 <label>
-                                    <input type="email" placeholder="Электронная почта" name="email">
+                                    <input type="email" placeholder="Электронная почта" name="email" required>
                                 </label>
                             </div>
 
@@ -1021,6 +1022,7 @@
 
                                 </div>
                             </div>
+
                             <div class="modal-send__price modal-send-price">
                                 <div class="modal-send-price__text">Итого:</div>
                                 <div class="modal-send-price__info">
@@ -1037,6 +1039,7 @@
                             <div class="modal-send__btn">
                                 <input type="submit" value="Оформить" class="js-tariff">
                             </div>
+
                             <div class="modal-send__finish">
                                 Нажимая на кнопку, Вы соглашаетесь с <a href="./pdf/opd.pdf" target="_blank">Политикой
                                     обратоки

@@ -156,38 +156,6 @@ const accordion = document.querySelectorAll(".accordion-modern");
 const accordion2 = document.querySelectorAll(".accordion-work");
 const accordion3 = document.querySelectorAll(".accordion-faq");
 
-//---временно не нужно
-// accordion.forEach((element) => {
-//   element.addEventListener("click", function () {
-//     if (element.classList.contains("open")) {
-//       element.classList.remove("open");
-//     } else {
-//       accordion.forEach((elem) => elem.classList.remove("open"));
-//       element.classList.add("open");
-//     }
-//   });
-// });
-// accordion2.forEach((element) => {
-//   element.addEventListener("click", function () {
-//     if (element.classList.contains("open")) {
-//       element.classList.remove("open");
-//     } else {
-//       accordion2.forEach((elem) => elem.classList.remove("open"));
-//       element.classList.add("open");
-//     }
-//   });
-// });
-// accordion3.forEach((element) => {
-//   element.addEventListener("click", function () {
-//     if (element.classList.contains("open")) {
-//       element.classList.remove("open");
-//     } else {
-//       accordion3.forEach((elem) => elem.classList.remove("open"));
-//       element.classList.add("open");
-//     }
-//   });
-// });
-
 window.addEventListener("DOMContentLoaded", function () {
   [].forEach.call(document.querySelectorAll(".phone-input"), function (input) {
     var keyCode;
@@ -277,16 +245,22 @@ modalFormClose.addEventListener("click", function () {
 const btnSmm = document.querySelector(".js-smm");
 const modalSmm = document.querySelector(".modal-smm");
 const modalSmmClose = document.querySelector(".modal-smm__close");
-const lock = document.body; // Assuming you want to lock the body
+const modalSmmOverlay = document.querySelector(".modal-smm__overlay");
+const lock = document.body;
 
 function openModal() {
   modalSmm.classList.add("modal-open");
   lock.classList.add("modal-open");
 }
+
 function closeModal() {
   modalSmm.classList.remove("modal-open");
   lock.classList.remove("modal-open");
 }
+modalSmmOverlay.addEventListener('click', function() {
+  modalSmm.classList.remove("modal-open");
+});
+
 btnSmm.addEventListener("click", openModal);
 modalSmmClose.addEventListener("click", closeModal);
 document.addEventListener("click", function (event) {
@@ -347,7 +321,7 @@ if (animItems.length > 0) {
   }, 300);
 }
 //---Форма обратной связи
-document.querySelector(".js-send").addEventListener("click", function (e) {
+document.querySelector(".js-job-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const form = this.closest("form");
@@ -383,49 +357,13 @@ document.querySelector(".js-send").addEventListener("click", function (e) {
 
 
 //------форма выбора тарифа
-// document.querySelector(".js-tariff").addEventListener("click", function (e) {
-//   e.preventDefault();
-
-//   const form = this.closest("form");
-//   const formData = new FormData(form);
-
-//   // Get form values
-//   formData.append("name", form.querySelector('input[type="text"]').value);
-//   formData.append("phone", form.querySelector('input[type="tel"]').value);
-//   formData.append("email", form.querySelector('input[type="email"]').value);
-//   formData.append("package", form.querySelector('input[type="package"]').value);
-
-
-//   fetch("../mailerTariff.php", {
-//     method: "POST",
-//     body: formData,
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       if (data.success) {
-//         modalForm.classList.add("modal-open");
-//         bodyLock.classList.add("modal-open");
-
-//         form.reset();
-//       } else {
-//         console.log(data.message);
-//       }
-//     })
-//     .catch((error) => {
-//       // console.error('Error:', error);
-//       console.log(
-//         "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.2"
-//       );
-//     });
-// });
-
-document.querySelector(".js-tariff").addEventListener("click", function (e) {
+document.querySelector(".js-form-tariff").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const modal = document.querySelector('.modal-send')
   const form = this.closest("form");
   if (!form) {
-    console.error("Form not found");
+    // console.error("Form not found");
     return;
   }
   
@@ -447,7 +385,7 @@ document.querySelector(".js-tariff").addEventListener("click", function (e) {
     })
     .then((data) => {
       if (data.success) {
-        const modalForm = document.querySelector('.modal-form');
+        const modalForm = document.querySelector('.js-modal');
         const bodyLock = document.body;
         
         if (modalForm) modalForm.classList.add("modal-open");
@@ -457,12 +395,12 @@ document.querySelector(".js-tariff").addEventListener("click", function (e) {
         modal.classList.remove('modal-open')
       } else {
         console.error("Form submission error:", data.message);
-        alert("Ошибка при отправке формы: " + data.message);
+        // alert("Ошибка при отправке формы: " + data.message);
       }
     })
     .catch((error) => {
       console.error('Error:', error);
-      alert("Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.");
+      // alert("Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.");
     });
 });
 
@@ -474,8 +412,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnTariff = document.querySelectorAll(".modal-smm-item__btn");
   const modalTariffsSend = document.querySelector(".modal-send");
   const closeBtnModalTariff = document.querySelector('.modal-send__close')
-  const closeOverlayModalTariff = document.querySelector('.modal__overlay')
+  const closeOverlayModalTariff = document.querySelector('.modal-send__overlay')
   const modalSmmClose = document.querySelector('.modal-smm')
+
+  modalSmmClose.classList.remove("modal-open");
+      
+      closeBtnModalTariff.addEventListener('click', function() {
+        modalTariffsSend.classList.remove("modal-open");
+      })
+      closeOverlayModalTariff.addEventListener('click', function() {
+        modalTariffsSend.classList.remove("modal-open");
+      })
   
   btnTariff.forEach((btn) => {
     btn.addEventListener("click", function () {
@@ -484,20 +431,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
       allTariffs.forEach((trf) => {
         trf.classList.remove("selected");
-        console.log(trf.getAttribute("data-value"), tariff);
         if (trf.getAttribute("data-value") === tariff) {
           trf.classList.add("selected");
         }
       });
-      selectedTariff(); //---ломает селект!!!!!!!
+
+      selectedTariff();
+      
       modalTariffsSend.classList.add("modal-open");
-      modalSmmClose.classList.remove("modal-open");
-      closeBtnModalTariff.addEventListener('click', function() {
-        modalTariffsSend.classList.remove("modal-open");
-      })
-      closeOverlayModalTariff.addEventListener('click', function() {
-        modalTariffsSend.classList.remove("modal-open");
-      })
+      modalSmmClose.classList.remove('modal-open')
+      
     });
   });
 
@@ -558,7 +501,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   };
-  selectedTariff();
+  //selectedTariff();
 
   function focusNextOption(select) {
     const options = select.querySelectorAll(".modal-send-option");
