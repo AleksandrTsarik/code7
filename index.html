@@ -904,7 +904,7 @@
                                     <div class="modal-smm-item__price--new">25 000 ₽</div>
                                     <div class="modal-smm-item__price--old">30 000 ₽</div>
                                 </div>
-                                <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
+                                <button class="modal-smm-item__btn btn btn-dark" data-value="basic">Оформить</button>
                             </div>
                         </div>
                     </div>
@@ -931,7 +931,7 @@
                                     <div class="modal-smm-item__price--new">50 000 ₽</div>
                                     <div class="modal-smm-item__price--old">55 000 ₽</div>
                                 </div>
-                                <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
+                                <button class="modal-smm-item__btn btn btn-dark" data-value="medium">Оформить</button>
                             </div>
                         </div>
                     </div>
@@ -957,7 +957,7 @@
                                     <div class="modal-smm-item__price--new">75 000 ₽</div>
                                     <div class="modal-smm-item__price--old">80 000 ₽</div>
                                 </div>
-                                <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
+                                <button class="modal-smm-item__btn btn btn-dark" data-value="full">Оформить</button>
                             </div>
                         </div>
                     </div>
@@ -972,40 +972,47 @@
                 <div class="modal-send__title">Оформить пакет</div>
                 <div class="modal-send__subtitle">Заполните данные, и мы свяжемся с Вами в ближайшее время для уточнения
                     деталей и подтверждения оплаты.</div>
-                <form>
+                <form method="post">
                     <div class="modal-send__form">
                         <div class="modal-send__inputs">
                             <div class="modal-send__input">
                                 <label>
-                                    <input type="text" placeholder="Ваше имя">
+                                    <input type="text" placeholder="Ваше имя" name="name">
                                 </label>
                             </div>
                             <div class="modal-send__input">
                                 <label>
-                                    <input type="tel" placeholder="Номер телефона" class="phone-input">
+                                    <input type="tel" placeholder="Номер телефона" class="phone-input" name="phone">
                                 </label>
                             </div>
                             <div class="modal-send__input">
                                 <label>
-                                    <input type="email" placeholder="Электронная почта">
+                                    <input type="email" placeholder="Электронная почта" name="email">
                                 </label>
                             </div>
 
                             <div class="modal-send__select">
                                 <div class="modal-send-select" tabindex="0">
+
                                     <div class="modal-send-select__trigger">
                                         <span>Пакеты услуг SMM</span>
                                         <div class="modal-send-select__arrow"></div>
                                     </div>
+
                                     <div class="modal-send-options">
-                                        <span class="modal-send-option" data-value="basic" data-price="25000">Базовый
-                                            пакет</span>
-                                        <span class="modal-send-option" data-value="medium" data-price="50000">Средний
-                                            пакет</span>
-                                        <span class="modal-send-option" data-value="full" data-price="75000">Полный
-                                            пакет</span>
+                                        <span class="modal-send-option selected" data-value="basic" data-price="25000">
+                                            Базовый пакет
+                                        </span>
+                                        <span class="modal-send-option" data-value="medium" data-price="50000">
+                                            Средний пакет
+                                        </span>
+                                        <span class="modal-send-option" data-value="full" data-price="75000">
+                                            Полный пакет
+                                        </span>
                                     </div>
+
                                     <input type="hidden" name="package" value="">
+
                                 </div>
                             </div>
                             <div class="modal-send__price modal-send-price">
@@ -1022,7 +1029,7 @@
                                 </div>
                             </div>
                             <div class="modal-send__btn">
-                                <input type="submit" value="Оформить">
+                                <input type="submit" value="Оформить" class="js-tariff">
                             </div>
                             <div class="modal-send__finish">
                                 Нажимая на кнопку, Вы соглашаетесь с <a href="./pdf/opd.pdf" target="_blank">Политикой

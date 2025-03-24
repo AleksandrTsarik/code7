@@ -346,7 +346,7 @@ if (animItems.length > 0) {
     animOnScroll();
   }, 300);
 }
-
+//---Форма обратной связи
 document.querySelector(".js-send").addEventListener("click", function (e) {
   e.preventDefault();
 
@@ -381,15 +381,88 @@ document.querySelector(".js-send").addEventListener("click", function (e) {
     });
 });
 
+
+//------форма выбора тарифа
+document.querySelector(".js-tariff").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  const form = this.closest("form");
+  const formData = new FormData(form);
+
+  // Get form values
+  formData.append("name", form.querySelector('input[type="text"]').value);
+  formData.append("phone", form.querySelector('input[type="tel"]').value);
+  formData.append("email", form.querySelector('input[type="email"]').value);
+  formData.append("package", form.querySelector('input[type="hidden"]').value);
+
+
+  fetch("../mailerTariff.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        modalForm.classList.add("modal-open");
+        bodyLock.classList.add("modal-open");
+
+        form.reset();
+      } else {
+        console.log(data.message);
+      }
+    })
+    .catch((error) => {
+      // console.error('Error:', error);
+      console.log(
+        "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.2"
+      );
+    });
+});
+
+
+
+//-----form Tariff
 document.addEventListener("DOMContentLoaded", function () {
-  const customSelects = document.querySelectorAll(".modal-send-select");
 
-  customSelects.forEach((select) => {
-    const trigger = select.querySelector(".modal-send-select__trigger");
-    const options = select.querySelectorAll(".modal-send-option");
-    const hiddenInput = select.querySelector('input[type="hidden"]');
+  const btnTariff = document.querySelectorAll(".modal-smm-item__btn");
+  const modalTariffsSend = document.querySelector(".modal-send");
+  const closeBtnModalTariff = document.querySelector('.modal-send__close')
+  const closeOverlayModalTariff = document.querySelector('.modal__overlay')
+  const modalSmmClose = document.querySelector('.modal-smm')
+  
+  btnTariff.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const tariff = btn.getAttribute("data-value");
+      const allTariffs = document.querySelectorAll(".modal-send-option");
 
-    const defaultSelected = select.querySelector(".modal-send-option.selected");
+      allTariffs.forEach((trf) => {
+        trf.classList.remove("selected");
+        console.log(trf.getAttribute("data-value"), tariff);
+        if (trf.getAttribute("data-value") === tariff) {
+          trf.classList.add("selected");
+        }
+      });
+      selectedTariff(); //---ломает селект!!!!!!!
+      modalTariffsSend.classList.add("modal-open");
+      modalSmmClose.classList.remove("modal-open");
+      closeBtnModalTariff.addEventListener('click', function() {
+        modalTariffsSend.classList.remove("modal-open");
+      })
+      closeOverlayModalTariff.addEventListener('click', function() {
+        modalTariffsSend.classList.remove("modal-open");
+      })
+    });
+  });
+
+  const customSelect = document.querySelector(".modal-send-select");
+
+  const selectedTariff = () => {
+
+    const trigger = customSelect.querySelector(".modal-send-select__trigger");
+    const options = customSelect.querySelectorAll(".modal-send-option");
+    const hiddenInput = customSelect.querySelector('input[type="hidden"]');
+
+    const defaultSelected = customSelect.querySelector(".modal-send-option.selected");
     if (defaultSelected) {
       trigger.querySelector("span").textContent = defaultSelected.textContent;
       if (hiddenInput) {
@@ -399,7 +472,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     trigger.addEventListener("click", () => {
-      select.classList.toggle("open");
+      customSelect.classList.toggle("open");
     });
 
     options.forEach((option) => {
@@ -413,29 +486,33 @@ document.addEventListener("DOMContentLoaded", function () {
           hiddenInput.dispatchEvent(event);
         }
         updatePriceDisplay(option);
-        select.classList.remove("open");
+        customSelect.classList.remove("open");
       });
     });
+
     document.addEventListener("click", (e) => {
-      if (!select.contains(e.target)) {
-        select.classList.remove("open");
+      if (!customSelect.contains(e.target)) {
+        customSelect.classList.remove("open");
       }
     });
-    select.addEventListener("keydown", (e) => {
+
+    customSelect.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        select.classList.toggle("open");
+        customSelect.classList.toggle("open");
       } else if (e.key === "Escape") {
-        select.classList.remove("open");
-      } else if (e.key === "ArrowDown" && select.classList.contains("open")) {
+        customSelect.classList.remove("open");
+      } else if (e.key === "ArrowDown" && customSelect.classList.contains("open")) {
         e.preventDefault();
-        focusNextOption(select);
-      } else if (e.key === "ArrowUp" && select.classList.contains("open")) {
+        focusNextOption(customSelect);
+      } else if (e.key === "ArrowUp" && customSelect.classList.contains("open")) {
         e.preventDefault();
-        focusPrevOption(select);
+        focusPrevOption(customSelect);
       }
     });
-  });
+  };
+  selectedTariff();
+
   function focusNextOption(select) {
     const options = select.querySelectorAll(".modal-send-option");
     const selected =
@@ -460,6 +537,7 @@ document.addEventListener("DOMContentLoaded", function () {
       prevOption.scrollIntoView({ block: "nearest" });
     }
   }
+
   function updatePriceDisplay(option) {
     if (!option) return;
 

@@ -1532,6 +1532,9 @@ section:last-child {
   }
 }
 
+.modal {
+  display: none;
+}
 .modal.modal-open {
   display: block;
 }
