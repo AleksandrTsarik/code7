@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
-        $mail->Subject = 'Выбор тарифа клиентом';
+        $mail->Subject = 'Новая заявкак SMM тарифа';
         
         $emailBody = "
             <h2>Новая заявка SMM</h2>
