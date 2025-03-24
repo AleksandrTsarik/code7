@@ -34,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2>Новая заявка SMM</h2>
             <p><strong>Имя:</strong> {$name}</p>
             <p><strong>Телефон:</strong> {$phone}</p>
-            <p><strong>Сообщение:</strong><br>{$email}</p>
-            <p><strong>Сообщение:</strong><br>{$tariff}</p>
+            <p><strong>E-mail:</strong><br>{$email}</p>
+            <p><strong>Тфариф:</strong><br>{$tariff}</p>
         ";
 
         $mail->Body = $emailBody;
