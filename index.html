@@ -146,7 +146,7 @@
                                     но и помогают бизнесу расти.</div>
                                 <div class="banner__btns">
                                     <!-- <a href="/#job" class="btn btn-dark" target="_blank">Нужны Ваши услуги</a> -->
-                                    <a href="/#relation" class="btn btn-light" target="_blank">Нужна консультация</a>
+                                    <a href="/#job" class="btn btn-light" target="_blank">Нужна консультация</a>
                                 </div>
                             </div>
                         </div>
@@ -899,8 +899,13 @@
                                 <li class="modal-smm-item__no">продвижение аккаунта</li>
                                 <li class="modal-smm-item__no">закупка рекламы</li>
                             </ul>
-
-                            <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
+                            <div class="modal-smm-item__buy">
+                                <div class="modal-smm-item__price">
+                                    <div class="modal-smm-item__price--new">25 000 ₽</div>
+                                    <div class="modal-smm-item__price--old">30 000 ₽</div>
+                                </div>
+                                <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
+                            </div>
                         </div>
                     </div>
 
@@ -921,7 +926,13 @@
                                 <li class="modal-smm-item__no">продвижение аккаунта</li>
                                 <li class="modal-smm-item__no">закупка рекламы</li>
                             </ul>
-                            <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
+                            <div class="modal-smm-item__buy">
+                                <div class="modal-smm-item__price">
+                                    <div class="modal-smm-item__price--new">50 000 ₽</div>
+                                    <div class="modal-smm-item__price--old">55 000 ₽</div>
+                                </div>
+                                <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
+                            </div>
                         </div>
                     </div>
 
@@ -941,12 +952,90 @@
                                 <li class="modal-smm-item__fire">продвижение аккаунта</li>
                                 <li class="modal-smm-item__fire">закупка рекламы</li>
                             </ul>
-                            <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
+                            <div class="modal-smm-item__buy">
+                                <div class="modal-smm-item__price">
+                                    <div class="modal-smm-item__price--new">75 000 ₽</div>
+                                    <div class="modal-smm-item__price--old">80 000 ₽</div>
+                                </div>
+                                <button class="modal-smm-item__btn btn btn-dark">Оформить</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="modal modal-send">
+            <div class="modal__overlay"></div>
+            <div class="modal-send__wrap modal__wrap">
+                <div class="modal-send__close"></div>
+                <div class="modal-send__title">Оформить пакет</div>
+                <div class="modal-send__subtitle">Заполните данные, и мы свяжемся с Вами в ближайшее время для уточнения
+                    деталей и подтверждения оплаты.</div>
+                <form>
+                    <div class="modal-send__form">
+                        <div class="modal-send__inputs">
+                            <div class="modal-send__input">
+                                <label>
+                                    <input type="text" placeholder="Ваше имя">
+                                </label>
+                            </div>
+                            <div class="modal-send__input">
+                                <label>
+                                    <input type="tel" placeholder="Номер телефона" class="phone-input">
+                                </label>
+                            </div>
+                            <div class="modal-send__input">
+                                <label>
+                                    <input type="email" placeholder="Электронная почта">
+                                </label>
+                            </div>
+
+                            <div class="modal-send__select">
+                                <div class="modal-send-select" tabindex="0">
+                                    <div class="modal-send-select__trigger">
+                                        <span>Пакеты услуг SMM</span>
+                                        <div class="modal-send-select__arrow"></div>
+                                    </div>
+                                    <div class="modal-send-options">
+                                        <span class="modal-send-option" data-value="basic" data-price="25000">Базовый
+                                            пакет</span>
+                                        <span class="modal-send-option" data-value="medium" data-price="50000">Средний
+                                            пакет</span>
+                                        <span class="modal-send-option" data-value="full" data-price="75000">Полный
+                                            пакет</span>
+                                    </div>
+                                    <input type="hidden" name="package" value="">
+                                </div>
+                            </div>
+                            <div class="modal-send__price modal-send-price">
+                                <div class="modal-send-price__text">Итого:</div>
+                                <div class="modal-send-price__info">
+                                    <div class="modal-send-price__price">
+                                        <div>Базовый пакет</div>
+                                        <span>25 000 ₽</span>
+                                    </div>
+                                    <div class="modal-send-price__discount">
+                                        <div>Ваша скидка</div>
+                                        <span>5 000 ₽</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-send__btn">
+                                <input type="submit" value="Оформить">
+                            </div>
+                            <div class="modal-send__finish">
+                                Нажимая на кнопку, Вы соглашаетесь с <a href="./pdf/opd.pdf" target="_blank">Политикой
+                                    обратоки
+                                    персональных
+                                    данных</a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>

@@ -2,106 +2,6 @@
 
 const tl = gsap.timeline();
 // //----GSAP
-// const tl = gsap.timeline();
-// tl.fromTo(
-//   ".mix-item--second",
-//   { x: "-100%", y: "100%", force3D: true },
-//   { y: 0, force3D: true,  }
-// );
-// tl.fromTo(
-//   ".mix-item--third",
-//   {
-//     x: "-100%",
-//   },
-//   {
-//     x: "-200%",
-//   },
-
-// );
-// tl.fromTo(
-//   ".mix-item--fourth",
-//   {
-//     opacity: 0,
-//     x: "-400%",
-//   },
-//   {
-//     opacity: 1,
-//     x: "-300%",
-//     y: 0,
-//   },
-
-// );
-// tl.fromTo(
-//   ".mix-item--fifth",
-//   {
-//     x: "-400%",
-//     y: "-100%",
-//   },
-//   {
-//     y: 0,
-//     x: '-400%'
-//   }
-// );
-// tl.fromTo(
-//   ".mix-item--sixth",
-//   {
-//     x: "-500%",
-//     y: "100%",
-//   },
-//   {
-//     y: 0,
-//     x: '-500%'
-//   }
-// );
-
-// const main = document.querySelector(".mix__list");
-
-// ScrollTrigger.create({
-//   animation: tl,
-//   trigger: ".mix__list-wrap",
-//   start: "center center",
-//   //end: () => `+=${main.offsetWidth}`,
-//   end: () => main.offsetWidth / 2,
-//   //end: "bottom top+=100",
-//   markers: true,
-//   scrub: 1,
-//   duration: 1,
-//   pin: true,
-//   pinSpacing: false, // Отключаем автоматическое добавление паддинга
-//   pinReparent: true, // Reparents the pinned element to the body
-//   stagger: 1,
-//   anticipatePin: 1, // Prepares the pin earlier for smoother pinning
-
-//   preventOverlaps: true,
-//   fastScrollEnd: true,
-// });
-
-// function handleMixScroll() {
-//   const main = document.querySelector(".mix__list");
-
-//   if (!main) return;
-//   const triggerOptions = {
-//     animation: tl,
-//     trigger: ".mix__list-wrap",
-//     start: "center center",
-//     // Используем динамический end с функцией
-//     end: () => main.offsetWidth / 2,
-//     markers: true,
-//     scrub: 1,
-//     pin: true,
-//     pinSpacing: false, // Отключаем автоматическое добавление паддинга
-//   };
-
-//   const st = ScrollTrigger.create(triggerOptions);
-
-//   window.addEventListener('resize', () => {
-//     st.refresh();
-//   });
-// }
-
-// function handleDomContentLoaded() {
-//   handleMixScroll();
-// }
 tl.fromTo(
   ".anim-title",
   {
@@ -142,7 +42,8 @@ tl.fromTo(
       scale: 1,
       opacity: 1,
       duration: 1,
-    }
+    },
+    0.5
   )
   .fromTo(
     ".banner__btns",
@@ -154,7 +55,8 @@ tl.fromTo(
       scale: 1,
       opacity: 1,
       duration: 1,
-    }
+    },
+    1.5
   );
 
 //anim banner bg
@@ -361,16 +263,14 @@ const modalForm = document.querySelector(".js-modal");
 const modalFormClose = document.querySelector(".js-modal-close");
 const modalFormOverlay = document.querySelector(".js-modal-overlay");
 
-modalFormOverlay.addEventListener("click", function() {
+modalFormOverlay.addEventListener("click", function () {
   modalForm.classList.remove("modal-open");
   bodyLock.classList.remove("modal-open");
-})
-modalFormClose.addEventListener("click", function() {
+});
+modalFormClose.addEventListener("click", function () {
   modalForm.classList.remove("modal-open");
   bodyLock.classList.remove("modal-open");
-})
-
-
+});
 
 //-----modal smm
 
@@ -479,4 +379,115 @@ document.querySelector(".js-send").addEventListener("click", function (e) {
         "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.2"
       );
     });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const customSelects = document.querySelectorAll(".modal-send-select");
+
+  customSelects.forEach((select) => {
+    const trigger = select.querySelector(".modal-send-select__trigger");
+    const options = select.querySelectorAll(".modal-send-option");
+    const hiddenInput = select.querySelector('input[type="hidden"]');
+
+    const defaultSelected = select.querySelector(".modal-send-option.selected");
+    if (defaultSelected) {
+      trigger.querySelector("span").textContent = defaultSelected.textContent;
+      if (hiddenInput) {
+        hiddenInput.value = defaultSelected.getAttribute("data-value");
+      }
+      updatePriceDisplay(defaultSelected);
+    }
+
+    trigger.addEventListener("click", () => {
+      select.classList.toggle("open");
+    });
+
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        trigger.querySelector("span").textContent = option.textContent;
+        options.forEach((opt) => opt.classList.remove("selected"));
+        option.classList.add("selected");
+        if (hiddenInput) {
+          hiddenInput.value = option.getAttribute("data-value");
+          const event = new Event("change");
+          hiddenInput.dispatchEvent(event);
+        }
+        updatePriceDisplay(option);
+        select.classList.remove("open");
+      });
+    });
+    document.addEventListener("click", (e) => {
+      if (!select.contains(e.target)) {
+        select.classList.remove("open");
+      }
+    });
+    select.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        select.classList.toggle("open");
+      } else if (e.key === "Escape") {
+        select.classList.remove("open");
+      } else if (e.key === "ArrowDown" && select.classList.contains("open")) {
+        e.preventDefault();
+        focusNextOption(select);
+      } else if (e.key === "ArrowUp" && select.classList.contains("open")) {
+        e.preventDefault();
+        focusPrevOption(select);
+      }
+    });
+  });
+  function focusNextOption(select) {
+    const options = select.querySelectorAll(".modal-send-option");
+    const selected =
+      select.querySelector(".modal-send-option.selected") || options[0];
+    const nextOption = selected.nextElementSibling;
+
+    if (nextOption) {
+      options.forEach((opt) => opt.classList.remove("selected"));
+      nextOption.classList.add("selected");
+      nextOption.scrollIntoView({ block: "nearest" });
+    }
+  }
+  function focusPrevOption(select) {
+    const options = select.querySelectorAll(".modal-send-option");
+    const selected =
+      select.querySelector(".modal-send-option.selected") || options[0];
+    const prevOption = selected.previousElementSibling;
+
+    if (prevOption) {
+      options.forEach((opt) => opt.classList.remove("selected"));
+      prevOption.classList.add("selected");
+      prevOption.scrollIntoView({ block: "nearest" });
+    }
+  }
+  function updatePriceDisplay(option) {
+    if (!option) return;
+
+    const priceValue = option.getAttribute("data-price");
+    const packageName = option.textContent;
+
+    if (priceValue) {
+      const priceDisplay = document.querySelector(".modal-send-price__price");
+      if (priceDisplay) {
+        priceDisplay.querySelector("div").textContent = packageName;
+        priceDisplay.querySelector("span").textContent =
+          formatPrice(priceValue) + " ₽";
+        const priceContainer = document.querySelector(".modal-send-price");
+        if (priceContainer) {
+          priceContainer.style.display = "block";
+        }
+        const discountDisplay = document.querySelector(
+          ".modal-send-price__discount span"
+        );
+        if (discountDisplay) {
+          let discount = "5000";
+          discountDisplay.textContent = formatPrice(discount) + " ₽";
+        }
+      }
+    }
+  }
+
+  function formatPrice(price) {
+    return parseInt(price).toLocaleString("ru-RU");
+  }
 });
