@@ -383,39 +383,86 @@ document.querySelector(".js-send").addEventListener("click", function (e) {
 
 
 //------форма выбора тарифа
+// document.querySelector(".js-tariff").addEventListener("click", function (e) {
+//   e.preventDefault();
+
+//   const form = this.closest("form");
+//   const formData = new FormData(form);
+
+//   // Get form values
+//   formData.append("name", form.querySelector('input[type="text"]').value);
+//   formData.append("phone", form.querySelector('input[type="tel"]').value);
+//   formData.append("email", form.querySelector('input[type="email"]').value);
+//   formData.append("package", form.querySelector('input[type="package"]').value);
+
+
+//   fetch("../mailerTariff.php", {
+//     method: "POST",
+//     body: formData,
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       if (data.success) {
+//         modalForm.classList.add("modal-open");
+//         bodyLock.classList.add("modal-open");
+
+//         form.reset();
+//       } else {
+//         console.log(data.message);
+//       }
+//     })
+//     .catch((error) => {
+//       // console.error('Error:', error);
+//       console.log(
+//         "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.2"
+//       );
+//     });
+// });
+
 document.querySelector(".js-tariff").addEventListener("click", function (e) {
   e.preventDefault();
 
+  const modal = document.querySelector('.modal-send')
   const form = this.closest("form");
+  if (!form) {
+    console.error("Form not found");
+    return;
+  }
+  
   const formData = new FormData(form);
-
-  // Get form values
-  formData.append("name", form.querySelector('input[type="text"]').value);
-  formData.append("phone", form.querySelector('input[type="tel"]').value);
-  formData.append("email", form.querySelector('input[type="email"]').value);
-  formData.append("package", form.querySelector('input[type="hidden"]').value);
-
+  const packageInput = form.querySelector('input[name="package"]');
+  if (packageInput) {
+    formData.append("package", packageInput.value);
+  }
 
   fetch("../mailerTariff.php", {
     method: "POST",
     body: formData,
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then((data) => {
       if (data.success) {
-        modalForm.classList.add("modal-open");
-        bodyLock.classList.add("modal-open");
+        const modalForm = document.querySelector('.modal-form');
+        const bodyLock = document.body;
+        
+        if (modalForm) modalForm.classList.add("modal-open");
+        if (bodyLock) bodyLock.classList.add("modal-open");
 
         form.reset();
+        modal.classList.remove('modal-open')
       } else {
-        console.log(data.message);
+        console.error("Form submission error:", data.message);
+        alert("Ошибка при отправке формы: " + data.message);
       }
     })
     .catch((error) => {
-      // console.error('Error:', error);
-      console.log(
-        "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.2"
-      );
+      console.error('Error:', error);
+      alert("Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.");
     });
 });
 

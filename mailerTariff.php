@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Subject = 'Выбор тарифа клиентом';
         
         $emailBody = "
-            <h2>Новая заявка тарифа</h2>
+            <h2>Новая заявка SMM</h2>
             <p><strong>Имя:</strong> {$name}</p>
             <p><strong>Телефон:</strong> {$phone}</p>
             <p><strong>Сообщение:</strong><br>{$email}</p>
