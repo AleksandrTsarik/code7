@@ -358,9 +358,9 @@ document.querySelector(".js-job-form").addEventListener("submit", function (e) {
 
 //------форма выбора тарифа
 document.querySelector(".js-form-tariff").addEventListener("submit", function (e) {
-  e.preventDefault();
+  e.preventDefault();  
 
-  const modal = document.querySelector('.modal-send')
+  // const modal = document.querySelector('.modal-send')
   const form = this.closest("form");
   if (!form) {
     // console.error("Form not found");
@@ -369,11 +369,49 @@ document.querySelector(".js-form-tariff").addEventListener("submit", function (e
   
   const formData = new FormData(form);
   const packageInput = form.querySelector('input[name="package"]');
+  const priceInput = form.querySelector('input[name="price"]');
   if (packageInput) {
     formData.append("package", packageInput.value);
   }
+  if (priceInput) {
+    formData.append("price", priceInput.value);
+  }
 
-  fetch("../mailerTariff.php", {
+  generateQR(formData)
+
+  // fetch("../mailerTariff.php", {
+  //   method: "POST",
+  //   body: formData,
+  // })
+  //   .then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  //     return response.json();
+  //   })
+  //   .then((data) => {
+  //     if (data.success) {
+  //       const modalForm = document.querySelector('.js-modal');
+  //       const bodyLock = document.body;
+        
+  //       if (modalForm) modalForm.classList.add("modal-open");
+  //       if (bodyLock) bodyLock.classList.add("modal-open");
+
+  //       form.reset();
+  //       modal.classList.remove('modal-open')
+  //     } else {
+  //       console.error("Form submission error:", data.message);
+  //       // alert("Ошибка при отправке формы: " + data.message);
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error:', error);
+  //     // alert("Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.");
+  //   });
+});
+
+function generateQR(formData) {
+  fetch("../api/payment.php", {
     method: "POST",
     body: formData,
   })
@@ -384,25 +422,14 @@ document.querySelector(".js-form-tariff").addEventListener("submit", function (e
       return response.json();
     })
     .then((data) => {
-      if (data.success) {
-        const modalForm = document.querySelector('.js-modal');
-        const bodyLock = document.body;
-        
-        if (modalForm) modalForm.classList.add("modal-open");
-        if (bodyLock) bodyLock.classList.add("modal-open");
-
-        form.reset();
-        modal.classList.remove('modal-open')
-      } else {
-        console.error("Form submission error:", data.message);
-        // alert("Ошибка при отправке формы: " + data.message);
+      if(data.status === 'success') {
+        document.querySelector('.modal-send__form').innerHTML = data.data;
       }
     })
     .catch((error) => {
-      console.error('Error:', error);
-      // alert("Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.");
+      console.error('Error:', error);       
     });
-});
+}
 
 
 
@@ -450,13 +477,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const trigger = customSelect.querySelector(".modal-send-select__trigger");
     const options = customSelect.querySelectorAll(".modal-send-option");
-    const hiddenInput = customSelect.querySelector('input[type="hidden"]');
+    const hiddenPackage = customSelect.querySelector('input[name="package"]');
+    const hiddenPrice = customSelect.querySelector('input[name="price"]');
 
     const defaultSelected = customSelect.querySelector(".modal-send-option.selected");
     if (defaultSelected) {
       trigger.querySelector("span").textContent = defaultSelected.textContent;
-      if (hiddenInput) {
-        hiddenInput.value = defaultSelected.getAttribute("data-value");
+
+      if (hiddenPackage) {
+        hiddenPackage.value = defaultSelected.getAttribute("data-value");
+      }
+
+      if (hiddenPrice) {
+        hiddenPrice.value = defaultSelected.getAttribute("data-price");
       }
       updatePriceDisplay(defaultSelected);
     }
@@ -470,10 +503,15 @@ document.addEventListener("DOMContentLoaded", function () {
         trigger.querySelector("span").textContent = option.textContent;
         options.forEach((opt) => opt.classList.remove("selected"));
         option.classList.add("selected");
-        if (hiddenInput) {
-          hiddenInput.value = option.getAttribute("data-value");
+        if (hiddenPackage) {
+          hiddenPackage.value = option.getAttribute("data-value");
           const event = new Event("change");
-          hiddenInput.dispatchEvent(event);
+          hiddenPackage.dispatchEvent(event);
+        }
+        if (hiddenPrice) {
+          hiddenPrice.value = option.getAttribute("data-price");
+          const event = new Event("change");
+          hiddenPrice.dispatchEvent(event);
         }
         updatePriceDisplay(option);
         customSelect.classList.remove("open");
@@ -557,5 +595,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function formatPrice(price) {
     return parseInt(price).toLocaleString("ru-RU");
-  }
+  }  
 });
+

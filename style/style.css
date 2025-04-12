@@ -1972,6 +1972,43 @@ section:last-child {
   position: relative;
 }
 
+.payment {
+  padding-top: 50px;
+}
+
+.payform-tbank {
+  display: flex;
+  margin: 25px 0;
+  flex-direction: column;
+  max-width: 250px;
+}
+.payform-tbank-row {
+  margin: 2px;
+  border-radius: 4px;
+  flex: 1;
+  transition: 0.3s;
+  border: 1px solid #DFE3F3;
+  padding: 15px;
+  outline: none;
+  background-color: #DFE3F3;
+  font-size: 15px;
+}
+.payform-tbank-row:focus {
+  background-color: #FFFFFF;
+  border: 1px solid #616871;
+  border-radius: 4px;
+}
+.payform-tbank-btn {
+  background-color: #FBC520;
+  border: 1px solid #FBC520;
+  color: #3C2C0B;
+  cursor: pointer;
+}
+.payform-tbank-btn:hover {
+  background-color: #FAB619;
+  border: 1px solid #FAB619;
+}
+
 body {
   font-family: var(--ff);
   font-weight: 400;
