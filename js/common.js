@@ -2,22 +2,117 @@
 
 const tl = gsap.timeline();
 // //----GSAP
-tl.fromTo(
-  ".anim-title",
-  {
-    y: "50%",
-    opacity: 0,
-
-    //scale: 0.5
-  },
-  {
-    y: 0,
-    scale: 1,
-    opacity: 1,
-    duration: 1,
-  },
-  0.5
-)
+tl
+  .fromTo(
+    ".loader__part2", 
+    {
+      x: "-200px",
+      opacity: 0
+    },
+    {
+      x: "0",
+      opacity: 1
+    },
+    0.8
+  )
+  .fromTo(
+    ".loader__part3", 
+    {
+      x: "200px",
+      opacity: 0
+    },
+    {
+      x: "0",
+      opacity: 1
+    },
+    0.8
+  )
+  .fromTo(
+    ".loader__part5", 
+    {
+      opacity: 0
+    },
+    {
+      opacity: 1
+    },
+    1.2
+  )
+  .fromTo(
+    ".loader__part1", 
+    {
+      x: "150px",
+      opacity: 0
+    },
+    {
+      x: "0",
+      opacity: 1
+    },
+    1.5
+  )
+  .fromTo(
+    ".loader__part4", 
+    {
+      x: "-250px",
+      opacity: 0,
+      visibility: "hidden",
+      width: 0,
+    },
+    {
+      x: "0",
+      opacity: 1,
+      visibility: "visible",
+      width: "auto"
+    },
+    2
+  )  
+  .fromTo(
+    ".loader__part5--mobile", 
+    {
+      opacity: 0
+    },
+    {
+      opacity: 1
+    },
+    2.5
+  )
+  .fromTo(
+    ".loader__part6", 
+    {
+      y: "15px",
+      opacity: 0
+    },
+    {
+      y: 0,
+      opacity: 1
+    },
+    2.5
+  )
+  .fromTo(
+    ".loader__part7", 
+    {
+      y: "15px",
+      opacity: 0
+    },
+    {
+      y: 0,
+      opacity: 1
+    },
+    2.7
+  )  
+  .fromTo(
+    ".anim-title",
+    {
+      y: "50%",
+      opacity: 0,
+    },
+    {
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      duration: 1,
+    },
+    3.5
+  )
   .fromTo(
     ".banner__text",
     {
@@ -29,7 +124,8 @@ tl.fromTo(
       scale: 1,
       opacity: 1,
       duration: 1,
-    }
+    },
+    3.5
   )
   .fromTo(
     ".anim-img",
@@ -43,7 +139,7 @@ tl.fromTo(
       opacity: 1,
       duration: 1,
     },
-    0.5
+    3.5
   )
   .fromTo(
     ".banner__btns",
@@ -56,8 +152,8 @@ tl.fromTo(
       opacity: 1,
       duration: 1,
     },
-    1.5
-  );
+    4
+  )  
 
 //anim banner bg
 gsap.to(".banner__bg img", {
@@ -130,6 +226,27 @@ let btnAnimation = () => {
 
 btnAnimation();
 
+// LOCAL LOADER
+
+function startPreloader(parentSelector) {
+  const parent = document.querySelector(parentSelector);
+
+  parent.classList.add('is-show');
+  parent.innerHTML = '<div class="pre-loader"></div>';
+}
+
+function stopPreloader(parentSelector, innerContentHtml) {
+  const parent = document.querySelector(parentSelector);
+
+  parent.classList.add('is-show');
+  parent.innerHTML = innerContentHtml;
+}
+
+// Находим параметры в УРЛЕ
+let params = (new URL(document.location)).searchParams;
+let paramsPaymentStatusSuccess = params.get('paysuccess');
+let paramsPaymentOrderNum = params.get('ordernum');
+
 const buttonSelect = document.querySelector(".js-menu");
 const menuSelect = document.querySelector(".js-menu-drop");
 const bodyLock = document.querySelector("body");
@@ -155,6 +272,10 @@ document.addEventListener("click", function (event) {
 const accordion = document.querySelectorAll(".accordion-modern");
 const accordion2 = document.querySelectorAll(".accordion-work");
 const accordion3 = document.querySelectorAll(".accordion-faq");
+
+document.querySelector(".modal-send__input .phone-input").addEventListener("input", function() {
+  console.log(document.querySelector(".modal-send__input .phone-input").value.length)
+})
 
 window.addEventListener("DOMContentLoaded", function () {
   [].forEach.call(document.querySelectorAll(".phone-input"), function (input) {
@@ -230,18 +351,29 @@ function scrollToTop() {
 const modalForm = document.querySelector(".js-modal");
 const modalFormClose = document.querySelector(".js-modal-close");
 const modalFormOverlay = document.querySelector(".js-modal-overlay");
+const modalTitle = modalForm.querySelector('.modal__text-title');
+const modalInfo = modalForm.querySelector('.modal__text-info');
 
 modalFormOverlay.addEventListener("click", function () {
   modalForm.classList.remove("modal-open");
   bodyLock.classList.remove("modal-open");
+  modalForm.classList.remove("modal-open--error");
+  modalTitle.innerHTML = '';
+  modalInfo.innerHTML = '';
+
+  if(params.size !== 0) window.location.href = '/'
 });
 modalFormClose.addEventListener("click", function () {
   modalForm.classList.remove("modal-open");
+  modalForm.classList.remove("modal-open--error");
   bodyLock.classList.remove("modal-open");
+  modalTitle.innerHTML = '';
+  modalInfo.innerHTML = '';
+
+  if(params.size !== 0) window.location.href = '/'
 });
 
 //-----modal smm
-
 const btnSmm = document.querySelector(".js-smm");
 const modalSmm = document.querySelector(".modal-smm");
 const modalSmmClose = document.querySelector(".modal-smm__close");
@@ -258,7 +390,7 @@ function closeModal() {
   lock.classList.remove("modal-open");
 }
 modalSmmOverlay.addEventListener('click', function() {
-  modalSmm.classList.remove("modal-open");
+  modalSmm.classList.remove("modal-open");  
 });
 
 btnSmm.addEventListener("click", openModal);
@@ -339,9 +471,10 @@ document.querySelector(".js-job-form").addEventListener("submit", function (e) {
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
+        modalTitle.innerHTML = 'Данные отправлены!';
+        modalInfo.innerHTML = 'Мы свяжемся с Вами в ближайшее время.';
         modalForm.classList.add("modal-open");
         bodyLock.classList.add("modal-open");
-
         form.reset();
       } else {
         console.log(data.message);
@@ -362,55 +495,77 @@ document.querySelector(".js-form-tariff").addEventListener("submit", function (e
 
   // const modal = document.querySelector('.modal-send')
   const form = this.closest("form");
+  const formWrap = form.closest('.modal-send__form');
+  const formTitle = document.querySelector('.modal-send__title');
+  const formSubTitle = document.querySelector('.modal-send__subtitle');
+
   if (!form) {
     // console.error("Form not found");
     return;
-  }
+  }  
   
   const formData = new FormData(form);
   const packageInput = form.querySelector('input[name="package"]');
   const priceInput = form.querySelector('input[name="price"]');
+
+  const bodyWidth = document.body.getBoundingClientRect().width;
+  const mobileDevice = bodyWidth < 1024 ? true : false;
+
   if (packageInput) {
     formData.append("package", packageInput.value);
   }
   if (priceInput) {
     formData.append("price", priceInput.value);
-  }
+  }  
 
-  generateQR(formData)
+  fetch("../mailerTariff.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.success) {
+        formWrap.classList.add('hide');
 
-  // fetch("../mailerTariff.php", {
-  //   method: "POST",
-  //   body: formData,
-  // })
-  //   .then((response) => {
-  //     if (!response.ok) {
-  //       throw new Error('Network response was not ok');
-  //     }
-  //     return response.json();
-  //   })
-  //   .then((data) => {
-  //     if (data.success) {
-  //       const modalForm = document.querySelector('.js-modal');
-  //       const bodyLock = document.body;
-        
-  //       if (modalForm) modalForm.classList.add("modal-open");
-  //       if (bodyLock) bodyLock.classList.add("modal-open");
+        formTitle.innerHTML = mobileDevice ? 'Для оплаты<br>перейдите по ссылке' : 'Отсканируйте QR-код' 
+        formSubTitle.innerHTML = '' 
 
-  //       form.reset();
-  //       modal.classList.remove('modal-open')
-  //     } else {
-  //       console.error("Form submission error:", data.message);
-  //       // alert("Ошибка при отправке формы: " + data.message);
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.error('Error:', error);
-  //     // alert("Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.");
-  //   });
+        startPreloader('.modal-send__pay-qr');
+                
+        generateQR(formData);
+      } else {
+        console.error("Form submission error:", data.message);        
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);      
+    });
 });
 
+// Элементы об ошибках в форме заказа тарифы
+const trfErrorBlock = document.querySelector('.modal-send__pay-error');
+const trfErrorText = trfErrorBlock.querySelector('div');
+const formWrap = document.querySelector('.modal-send__form');
+
+// Запускаем таймер для запроса статуса платежа
+let timerGetStatusPayment = 1500;
+
+// Забираем переменную из localStorage
+// const localOrderID = JSON.parse(localStorage.getItem('orderNumber'));
+
 function generateQR(formData) {
+  if(!formData) return false;
+  const bodyWidth = document.body.getBoundingClientRect().width;
+  const mobileDevice = bodyWidth < 1024 ? true : false;
+  formData.append("mobileDevice", mobileDevice);
+
+  let QRHtml = '';
+
   fetch("../api/payment.php", {
     method: "POST",
     body: formData,
@@ -422,8 +577,34 @@ function generateQR(formData) {
       return response.json();
     })
     .then((data) => {
-      if(data.status === 'success') {
-        document.querySelector('.modal-send__form').innerHTML = data.data;
+      if(data.status === 'success') { 
+        QRHtml = mobileDevice ? '<a class="btn btn-dark" href="'+data.data+'">Перейти к оплате</a>' : data.data; 
+
+        setTimeout(function() {
+          stopPreloader('.modal-send__pay-qr', QRHtml)
+        }, 5000);
+
+        // Устанавливаем переменную в локалсторадж с номером текущего платежа от эквайринга и внутренний номер
+        let orderObj = {
+          paymentId: data.paymentId,
+          orderId: data.orderId
+        }
+        localStorage.setItem('orderNumber', JSON.stringify(orderObj));
+        
+        if(localStorage.getItem('orderNumber') !== null) {
+          let timerId = setTimeout(function locGetST() {
+            getStatusPayment(JSON.parse(localStorage.getItem('orderNumber')).paymentId)
+            if(timerGetStatusPayment != 0) { 
+              timerId = setTimeout(locGetST, timerGetStatusPayment)
+            }
+          }, timerGetStatusPayment)
+        }   
+
+        //getStatusPayment(data.paymentId);
+      }else if(data.status === 'error') {
+        console.log(data)
+        trfErrorBlock.classList.add('show');
+        trfErrorText.innerHTML = data.msg;
       }
     })
     .catch((error) => {
@@ -431,25 +612,121 @@ function generateQR(formData) {
     });
 }
 
+//getStatusPayment('6273128173');
 
+function getStatusPayment(paymentId) {
+  if(!paymentId) return false;
+
+  fetch("../api/payment.php?paymentId="+paymentId)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data.data);
+      if(data.data.Status === "CONFIRMED") {
+        timerGetStatusPayment = 0;
+        setTimeout(function() {
+          window.location.href = "/?paysuccess=true&ordernum="+data.data.PaymentId;
+        }, 1500)
+      }else if(data.data.Status === "REJECTED") {
+        timerGetStatusPayment = 0;
+        setTimeout(function() {
+          window.location.href = "/?paysuccess=false"
+        },1500);
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);       
+    });
+}
+
+// Запускаем модалку с инфой о статусе платежа
+if(paramsPaymentStatusSuccess === 'true') {
+  const orderNum = paramsPaymentOrderNum !== null ? '<b>№'+paramsPaymentOrderNum+'</b> ': '';
+  if (modalForm) {
+    modalTitle.innerHTML = 'Ваш заказ успешно оплачен'
+    modalInfo.innerHTML = 'Ваш заказ '+orderNum+'успешно оплачен. Наш специалист свяжется в ближайшее время. Для более подробной информации, о статусе заявки можно, узнать по телефону:<br> <a href="tel:+79090058585">+7 (909) 005-85-85</a>.<br><br>Чек об оплате отправлен на адрес почты, которую вы указали при оформлении заказа.<br><br><b>CodeSeven</b>'
+    modalForm.classList.add("modal-open");
+  }
+  if (bodyLock) {
+    bodyLock.classList.add("modal-open");
+  }
+} else if (paramsPaymentStatusSuccess === 'false') {
+  if (modalForm) {
+    modalTitle.innerHTML = 'Ваш платеж не прошел'
+    modalInfo.innerHTML = 'Ваш платеж был откланен банком. Для более подробной информации, можно позвонить по телефону:<br> <a href="tel:+79090058585">+7 (909) 005-85-85</a>.<br><br> С уважением, ваш <b>CodeSeven</b>'
+    modalForm.classList.add("modal-open");
+    modalForm.classList.add("modal-open--error");
+  }
+  if (bodyLock) {
+    bodyLock.classList.add("modal-open");
+  }
+}
+
+// Кнопка возврата на форму тарифа
+const returnForm = document.querySelector('.js-reset-form');
+
+returnForm.addEventListener('click', function() {
+  trfErrorBlock.classList.remove('show');
+  trfErrorText.innerHTML = '';
+  formWrap.classList.remove('hide');
+  formWrap.querySelector('[name="name"]').value = '';
+  formWrap.querySelector('[name="phone"]').value = '';
+  formWrap.querySelector('[name="email"]').value = '';
+});
 
 //-----form Tariff
 document.addEventListener("DOMContentLoaded", function () {
 
+  const mainLoader = document.querySelector('.main-loader');
+
+  setTimeout(function() {
+    mainLoader.classList.add('is-hide');
+    document.body.classList.remove('lock');
+  }, 3500);
+
   const btnTariff = document.querySelectorAll(".modal-smm-item__btn");
   const modalTariffsSend = document.querySelector(".modal-send");
-  const closeBtnModalTariff = document.querySelector('.modal-send__close')
-  const closeOverlayModalTariff = document.querySelector('.modal-send__overlay')
-  const modalSmmClose = document.querySelector('.modal-smm')
+  const closeBtnModalTariff = document.querySelector('.modal-send__close');
+  const closeOverlayModalTariff = document.querySelector('.modal-send__overlay');
+  const modalSmmClose = document.querySelector('.modal-smm');
+
+  // Элементы об ошибках в форме заказа тарифы
+  const trfErrorBlock = document.querySelector('.modal-send__pay-error');
+  const trfErrorText = trfErrorBlock.querySelector('div');
+  const formWrap = document.querySelector('.modal-send__form');
 
   modalSmmClose.classList.remove("modal-open");
       
-      closeBtnModalTariff.addEventListener('click', function() {
-        modalTariffsSend.classList.remove("modal-open");
-      })
-      closeOverlayModalTariff.addEventListener('click', function() {
-        modalTariffsSend.classList.remove("modal-open");
-      })
+  closeBtnModalTariff.addEventListener('click', function() {
+    modalTariffsSend.classList.remove("modal-open");
+    trfErrorBlock.classList.remove('show');
+    trfErrorText.innerHTML = '';
+    formWrap.classList.remove('hide');
+    formWrap.querySelector('[name="name"]').value = '';
+    formWrap.querySelector('[name="phone"]').value = '';
+    formWrap.querySelector('[name="email"]').value = '';
+    document.querySelector('.modal-send__title').innerHTML = 'Оформить пакет' 
+    document.querySelector('.modal-send__subtitle').innerHTML = 'Заполните данные, и мы свяжемся с Вами в ближайшее время для уточнения деталей и подтверждения оплаты.';
+    document.querySelector('.modal-send__pay-qr').innerHTML = '';
+    document.querySelector('.modal-send__pay-qr').classList.remove('is-show');
+  })
+  closeOverlayModalTariff.addEventListener('click', function() {
+    modalTariffsSend.classList.remove("modal-open");
+    trfErrorBlock.classList.remove('show');
+    trfErrorText.innerHTML = '';
+    formWrap.classList.remove('hide');
+    formWrap.querySelector('[name="name"]').value = '';
+    formWrap.querySelector('[name="phone"]').value = '';
+    formWrap.querySelector('[name="email"]').value = '';
+    document.querySelector('.modal-send__title').innerHTML = 'Оформить пакет' 
+    document.querySelector('.modal-send__subtitle').innerHTML = 'Заполните данные, и мы свяжемся с Вами в ближайшее время для уточнения деталей и подтверждения оплаты.';
+    document.querySelector('.modal-send__pay-qr').innerHTML = '';
+    document.querySelector('.modal-send__pay-qr').classList.remove('is-show');
+  })
   
   btnTariff.forEach((btn) => {
     btn.addEventListener("click", function () {
@@ -539,7 +816,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   };
-  //selectedTariff();
 
   function focusNextOption(select) {
     const options = select.querySelectorAll(".modal-send-option");

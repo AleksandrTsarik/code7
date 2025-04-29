@@ -1153,7 +1153,13 @@
   display: none;
   &.modal-open {
     display: block;
+    &--error {
+      .modal__img {
+        transform: rotate(180deg);
+      }
+    }
   }
+  
   &__overlay {
     position: fixed;
     left: 0;
@@ -1211,14 +1217,27 @@
   }
   &__text {
     text-align: center;
-    p {
-      &:first-child {
-        font-size: 24px;
-        margin-bottom: 16px;
+    &-title {
+      font-size: 24px;
+      margin-bottom: 16px;
+      font-weight: 500;      
+    }
+    &-info {
+      font-size: 16px;
+      a {
+        color: rgba(var(--primary));
         font-weight: 500;
+        font-size: 20px;
+        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
+        }
       }
-      &:last-child {
-        font-size: 18px;
+
+      b {
+        color: rgba(var(--primary));
+        font-weight: 500;
+        font-size: 20px;
       }
     }
   }
@@ -1275,6 +1294,8 @@
       }
       gap: 10px;
     }
+
+    
   }
 }
 .modal-smm-item {
@@ -1426,9 +1447,18 @@
     font-size: 16px;
     font-weight: 400;
     margin-bottom: 24px;
+
+    a {
+      color: rgb(var(--primary));
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
   &__inputs {
-    display: flex;
+    display: flex; 
     flex-direction: column;
     gap: 10px;
   }
@@ -1447,6 +1477,9 @@
       &:focus {
         box-shadow: 0 0 0 2px rgba(var(--primary), 0.5);
         border-color: transparent;
+      }
+      &.error-field {
+        box-shadow: 0 0 0 2px #ff3c00;
       }
     }
   }
@@ -1481,6 +1514,78 @@
         }
       }
     }
+  }
+
+  &__form {
+    &.hide {
+      display: none;
+    }
+  }
+
+  &__pay {
+    &-qr {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      text-align: center;      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .4s ease-in;
+      height: 0;
+
+      &.is-show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+        height: 185px;
+
+        @media (max-width: 1023px) {
+          height: 90px;
+        }
+      }
+
+      .pre-loader {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+
+
+      svg {
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+
+    &-error {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 15px;      
+      div {
+        color: rgb(var(--error_color));
+        font-size: 30px;
+        text-align: center;
+        max-width: 320px;
+      }
+
+      button {
+        background-color: rgb(var(--primary));
+        color: var(--light);
+        width: 100%;
+        text-align: center;
+        border-radius: 50px;
+        height: 50px;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      &.show {
+        display: flex;
+      }
+    }
+
   }
 }
 .modal-send-price {
@@ -1599,3 +1704,201 @@
   overflow: hidden;
   position: relative;
 }
+
+
+//------loader---//
+.main-loader {
+  position: fixed;  
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #141517;
+  z-index: 9999;  
+  transition: .5s ease-in-out;
+
+  &.is-hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.loader {
+  position: relative;
+  display: inline-flex;
+  column-gap: 10px;  
+
+  @media (max-width: 767px) {
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+  }
+
+  svg {
+    max-width: 100%;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 767px) {
+      justify-content: center;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__part1 {
+    margin-right: -54px;    
+    @media (max-width: 767px) {
+      margin-right: -30px;
+      flex: 0 0 105px;
+    }
+  }
+
+  &__part2 {
+    margin-right: -27px;
+    @media (max-width: 767px) {
+      margin-right: -12px;
+      flex: 0 0 45px;
+    }
+  }
+
+  &__part3 {
+    @media (max-width: 767px) {
+      flex: 0 0 33px;
+    }
+  }
+
+  &__part4 {
+    @media (max-width: 767px) {
+      flex: 0 0 150px;
+    }
+  }
+
+  &__part5 {
+    margin-top: -9px;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+
+    svg {
+      @media (max-width: 767px) {
+        width: 24px;
+        height: 24px;
+        margin-left: 9px;
+      }
+    }
+
+    &--mobile {
+      display: none;
+      margin-top: -30px;
+      margin-left: 9px;
+
+      @media (max-width: 767px) {
+        display: block;
+      }
+
+      svg {        
+        width: 18px;
+        height: 18px;       
+      }
+    }    
+  }
+
+  &__part6 {
+    margin-top: 30px;
+    @media (max-width: 767px) {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: -30px;
+      text-align: center;
+    }
+
+    svg {
+      @media (max-width: 767px) {
+        width: 150px;
+        height: 30px;
+      }
+    }
+  }
+
+  &__part7 {
+    margin-top: auto;
+
+    @media (max-width: 767px) {
+      position: absolute;
+      width: 100%;
+      bottom: -66px;
+      left: 0;
+      text-align: center;
+    }
+
+    svg {
+      @media (max-width: 767px) {
+        width: 180px;
+        height: 30px;
+      }
+    }
+  }
+  
+  &__part1,
+  &__part2,
+  &__part3,  
+  &__part5,
+  &__part6,
+  &__part7 {
+    opacity: 0;
+    &--mobile {
+      opacity: 0;
+    }
+  }
+
+  &__part4 {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+  }
+}
+
+/* HTML: <div class="loader"></div> */
+.pre-loader {
+  width: 100px;
+  height: 40px;
+  --g: radial-gradient(farthest-side,#0000 calc(95% - 3px), rgba(var(--primary)) calc(100% - 3px) 98%,#0000 101%) no-repeat;
+  background: var(--g), var(--g), var(--g);
+  background-size: 30px 30px;
+  animation: loader 1.5s infinite alternate;
+}
+@keyframes loader {
+  0% {
+    background-position: 0 50%, 50% 50%, 100% 50%;
+  }
+  20% {
+    background-position: 0 0, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0 100%, 50% 0, 100% 50%;
+  }
+  60% {
+    background-position: 0 50%, 50% 100%, 100% 0;
+  }
+  80% {
+    background-position: 0 50%, 50% 50%, 100% 100%;
+  }
+  100% {
+    background-position: 0 50%, 50% 50%, 100% 50%;
+  }
+}
+//------loader finish---//

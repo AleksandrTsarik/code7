@@ -53,6 +53,7 @@
   --body: #eeeeee;
   --color_text: #141517;
   --light: #fff;
+  --error_color: 237, 34, 15;
   --ff: "Manrope";
 }
 
@@ -1538,6 +1539,9 @@ section:last-child {
 .modal.modal-open {
   display: block;
 }
+.modal.modal-open--error .modal__img {
+  transform: rotate(180deg);
+}
 .modal__overlay {
   position: fixed;
   left: 0;
@@ -1597,13 +1601,27 @@ section:last-child {
 .modal__text {
   text-align: center;
 }
-.modal__text p:first-child {
+.modal__text-title {
   font-size: 24px;
   margin-bottom: 16px;
   font-weight: 500;
 }
-.modal__text p:last-child {
-  font-size: 18px;
+.modal__text-info {
+  font-size: 16px;
+}
+.modal__text-info a {
+  color: rgba(var(--primary));
+  font-weight: 500;
+  font-size: 20px;
+  text-decoration: underline;
+}
+.modal__text-info a:hover {
+  text-decoration: none;
+}
+.modal__text-info b {
+  color: rgba(var(--primary));
+  font-weight: 500;
+  font-size: 20px;
 }
 .modal .modal-smm__wrap {
   width: 100%;
@@ -1804,6 +1822,13 @@ section:last-child {
   font-weight: 400;
   margin-bottom: 24px;
 }
+.modal-send__subtitle a {
+  color: rgb(var(--primary));
+  text-decoration: underline;
+}
+.modal-send__subtitle a:hover {
+  text-decoration: none;
+}
 .modal-send__inputs {
   display: flex;
   flex-direction: column;
@@ -1824,6 +1849,9 @@ section:last-child {
 .modal-send__input input:focus {
   box-shadow: 0 0 0 2px rgba(var(--primary), 0.5);
   border-color: transparent;
+}
+.modal-send__input input.error-field {
+  box-shadow: 0 0 0 2px #ff3c00;
 }
 .modal-send__btn {
   width: 100%;
@@ -1856,6 +1884,64 @@ section:last-child {
   .modal-send__finish a:hover {
     border-bottom: solid 1px;
   }
+}
+.modal-send__form.hide {
+  display: none;
+}
+.modal-send__pay-qr {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s ease-in;
+  height: 0;
+}
+.modal-send__pay-qr.is-show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  height: 185px;
+}
+@media (max-width: 1023px) {
+  .modal-send__pay-qr.is-show {
+    height: 90px;
+  }
+}
+.modal-send__pay-qr .pre-loader {
+  margin-right: auto;
+  margin-left: auto;
+}
+.modal-send__pay-qr svg {
+  margin-right: auto;
+  margin-left: auto;
+}
+.modal-send__pay-error {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+}
+.modal-send__pay-error div {
+  color: rgb(var(--error_color));
+  font-size: 30px;
+  text-align: center;
+  max-width: 320px;
+}
+.modal-send__pay-error button {
+  background-color: rgb(var(--primary));
+  color: var(--light);
+  width: 100%;
+  text-align: center;
+  border-radius: 50px;
+  height: 50px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.modal-send__pay-error.show {
+  display: flex;
 }
 
 .modal-send-price {
@@ -1972,13 +2058,197 @@ section:last-child {
   position: relative;
 }
 
+.main-loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #141517;
+  z-index: 9999;
+  transition: 0.5s ease-in-out;
+}
+.main-loader.is-hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader {
+  position: relative;
+  display: inline-flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+@media (max-width: 767px) {
+  .loader {
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+  }
+}
+.loader svg {
+  max-width: 100%;
+}
+.loader__left {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .loader__left {
+    justify-content: center;
+  }
+}
+.loader__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.loader__part1 {
+  margin-right: -54px;
+}
+@media (max-width: 767px) {
+  .loader__part1 {
+    margin-right: -30px;
+    flex: 0 0 105px;
+  }
+}
+.loader__part2 {
+  margin-right: -27px;
+}
+@media (max-width: 767px) {
+  .loader__part2 {
+    margin-right: -12px;
+    flex: 0 0 45px;
+  }
+}
+@media (max-width: 767px) {
+  .loader__part3 {
+    flex: 0 0 33px;
+  }
+}
+@media (max-width: 767px) {
+  .loader__part4 {
+    flex: 0 0 150px;
+  }
+}
+.loader__part5 {
+  margin-top: -9px;
+}
+@media (max-width: 767px) {
+  .loader__part5 {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .loader__part5 svg {
+    width: 24px;
+    height: 24px;
+    margin-left: 9px;
+  }
+}
+.loader__part5--mobile {
+  display: none;
+  margin-top: -30px;
+  margin-left: 9px;
+}
+@media (max-width: 767px) {
+  .loader__part5--mobile {
+    display: block;
+  }
+}
+.loader__part5--mobile svg {
+  width: 18px;
+  height: 18px;
+}
+.loader__part6 {
+  margin-top: 30px;
+}
+@media (max-width: 767px) {
+  .loader__part6 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -30px;
+    text-align: center;
+  }
+}
+@media (max-width: 767px) {
+  .loader__part6 svg {
+    width: 150px;
+    height: 30px;
+  }
+}
+.loader__part7 {
+  margin-top: auto;
+}
+@media (max-width: 767px) {
+  .loader__part7 {
+    position: absolute;
+    width: 100%;
+    bottom: -66px;
+    left: 0;
+    text-align: center;
+  }
+}
+@media (max-width: 767px) {
+  .loader__part7 svg {
+    width: 180px;
+    height: 30px;
+  }
+}
+.loader__part1, .loader__part2, .loader__part3, .loader__part5, .loader__part6, .loader__part7 {
+  opacity: 0;
+}
+.loader__part1--mobile, .loader__part2--mobile, .loader__part3--mobile, .loader__part5--mobile, .loader__part6--mobile, .loader__part7--mobile {
+  opacity: 0;
+}
+.loader__part4 {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+}
+
+/* HTML: <div class="loader"></div> */
+.pre-loader {
+  width: 100px;
+  height: 40px;
+  --g: radial-gradient(farthest-side,#0000 calc(95% - 3px), rgba(var(--primary)) calc(100% - 3px) 98%,#0000 101%) no-repeat;
+  background: var(--g), var(--g), var(--g);
+  background-size: 30px 30px;
+  animation: loader 1.5s infinite alternate;
+}
+
+@keyframes loader {
+  0% {
+    background-position: 0 50%, 50% 50%, 100% 50%;
+  }
+  20% {
+    background-position: 0 0, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0 100%, 50% 0, 100% 50%;
+  }
+  60% {
+    background-position: 0 50%, 50% 100%, 100% 0;
+  }
+  80% {
+    background-position: 0 50%, 50% 50%, 100% 100%;
+  }
+  100% {
+    background-position: 0 50%, 50% 50%, 100% 50%;
+  }
+}
 .payment {
   padding-top: 50px;
 }
 
 .payform-tbank {
   display: flex;
-  margin: 25px 0;
+  margin: 2px auto;
   flex-direction: column;
   max-width: 250px;
 }
@@ -2003,6 +2273,7 @@ section:last-child {
   border: 1px solid #FBC520;
   color: #3C2C0B;
   cursor: pointer;
+  transition: 0.4s;
 }
 .payform-tbank-btn:hover {
   background-color: #FAB619;

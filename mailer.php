@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port = 465;
 
         $mail->setFrom('info@codeseven.ru', 'Contact Form');
-        $mail->addAddress('lokshin.maksim@gmail.com');
+        $mail->addAddress('info@codeseven.ru');
 
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
