@@ -1272,7 +1272,7 @@
 //---------flip-card finish------------//
 
 //---------advertising-offer finish------------//
-.advertising-offer {
+.offer-flip {
   &__head {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1433,7 +1433,52 @@
   }
 }
 
-.advertising-work {
+.diagram {
+  &__inner {
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 24px;
+  }
+  &__subtitle {
+    max-width: 80%;
+    margin: 0 auto 24px;
+    font-weight: 500;
+    span {
+      color: rgba(20, 21, 23, 0.6);
+      margin-top: 24px;
+      display: block;
+    }
+  }
+}
+.diagram-img {
+  background-image: url("../img/circle.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  max-width: 740px;
+  height: 565px;
+  margin: 64px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__inner {
+  }
+  &__text {
+    margin-bottom: 16px;
+    color: rgba(20, 21, 23, 0.6);
+  }
+  &__price {
+    font-size: 52px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  &__btn {
+  }
+}
+
+.w-work {
   &__inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1452,7 +1497,71 @@
     }
     &:last-child {
     }
-    ul {
+  }
+}
+
+.choice-me {
+  &__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 64px;
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+  }
+  &__text {
+    font-size: 20px;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__item {
+    padding: 32px 24px;
+    border-radius: 16px;
+    background-color: var(--light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (max-width: 767px) {
+      padding: 24px 16px;
+    }
+    p {
+      &:first-child {
+        font-size: 28px;
+        font-weight: 500;
+        margin-bottom: 40px;
+        @media (max-width: 1023px) {
+          font-size: 24px;
+          margin-bottom: 24px;
+        }
+        @media (max-width: 767px) {
+          font-size: 20px;
+          margin-bottom: 16px;
+        }
+      }
+      &:last-child {
+        font-size: 16px;
+        font-weight: 4000;
+        color: rgba(20, 21, 23, 0.6);
+      }
+    }
+    &:last-child {
+      background: var(--liner);
+      color: var(--light);
+      p {
+        color: var(--light);
+      }
     }
   }
 }
