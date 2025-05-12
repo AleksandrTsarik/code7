@@ -1871,6 +1871,9 @@ section:last-child {
 
 .diagram__inner {
   text-align: center;
+  background-color: rgba(20, 21, 23, 0.05);
+  border-radius: 16px;
+  padding: 64px 0;
 }
 .diagram__title {
   margin-bottom: 24px;
@@ -1899,6 +1902,13 @@ section:last-child {
   align-items: center;
   justify-content: center;
 }
+@media (max-width: 991px) {
+  .diagram-img {
+    background-image: url("../img/circle-mobile.webp");
+    background-size: auto 100%;
+    width: 100%;
+  }
+}
 .diagram-img__text {
   margin-bottom: 16px;
   color: rgba(20, 21, 23, 0.6);
@@ -1906,6 +1916,59 @@ section:last-child {
 .diagram-img__price {
   font-size: 52px;
   font-weight: 500;
+  margin-bottom: 24px;
+}
+.form-fb__inner {
+  text-align: center;
+  background-color: rgba(20, 21, 23, 0.05);
+  border-radius: 16px;
+  padding: 64px 0;
+  position: relative;
+  overflow: hidden;
+}
+.form-fb__inner::after {
+  content: "";
+  display: block;
+  background-image: url("../img/circle-big.webp");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 50% 50%;
+  width: 1060px;
+  height: 905px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.form-fb .job {
+  background-color: var(--light);
+  border-radius: 16px;
+  padding: 32px 24px;
+  width: 100%;
+  max-width: 485px;
+  margin: 40px auto 0;
+}
+@media (max-width: 575px) {
+  .form-fb .job {
+    max-width: 90%;
+  }
+}
+.form-fb .job__offer p {
+  color: var(--color_text);
+  font-weight: 500;
+}
+.form-fb .job__offer p:last-child {
+  color: rgba(20, 21, 23, 0.6);
+  font-size: 16px;
+}
+.form-fb .job input {
+  border: solid 1px rgba(20, 21, 23, 0.15);
+}
+.form-fb .job textarea {
+  border: solid 1px rgba(20, 21, 23, 0.15);
+}
+.form-fb__title {
   margin-bottom: 24px;
 }
 .w-work__inner {

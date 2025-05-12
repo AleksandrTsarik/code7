@@ -1434,8 +1434,13 @@
 }
 
 .diagram {
+  &__container {
+  }
   &__inner {
     text-align: center;
+    background-color: rgba(20, 21, 23, 0.05);
+    border-radius: 16px;
+    padding: 64px 0;
   }
   &__title {
     margin-bottom: 24px;
@@ -1463,6 +1468,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 991px) {
+    background-image: url("../img/circle-mobile.webp");
+    background-size: auto 100%;
+    width: 100%;
+  }
   &__inner {
   }
   &__text {
@@ -1475,6 +1485,64 @@
     margin-bottom: 24px;
   }
   &__btn {
+  }
+}
+
+.form-fb {
+  &__inner {
+    text-align: center;
+    background-color: rgba(20, 21, 23, 0.05);
+    border-radius: 16px;
+    padding: 64px 0;
+    position: relative;
+    overflow: hidden;
+    &::after {
+      content: "";
+      display: block;
+      background-image: url("../img/circle-big.webp");
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-position: 50% 50%;
+      width: 1060px;
+      height: 905px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+  }
+  .job {
+    background-color: var(--light);
+    border-radius: 16px;
+    padding: 32px 24px;
+    width: 100%;
+    max-width: 485px;
+    margin: 40px auto 0;
+    @media (max-width: 575px) {
+      max-width: 90%;
+    }
+    &__offer {
+      p {
+        color: var(--color_text);
+        font-weight: 500;
+        &:last-child {
+          color: rgba(20, 21, 23, 0.6);
+          font-size: 16px;
+        }
+      }
+    }
+    input {
+      border: solid 1px rgba(20, 21, 23, 0.15);
+    }
+    textarea {
+      border: solid 1px rgba(20, 21, 23, 0.15);
+    }
+  }
+  &__title {
+    margin-bottom: 24px;
+  }
+  &__subtitle {
   }
 }
 
