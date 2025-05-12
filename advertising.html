@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code7</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" href="./img/favikon.png">
+</head>
+
+<body class="">
+
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <div class="header__top">
+                    <div class="header__logo">
+                        <a href="/">
+                            <img src="./img/logo.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="header__contact header-desk">
+                        <a class="header-social btn btn-light"
+                            href="https://api.whatsapp.com/send/?phone=79090058585&text&type=phone_number&app_absent=0"
+                            target="_blank">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M19.7956 4.19733C17.7268 2.13667 14.9765 1.00092 12.0465 1C6.00883 1 1.09487 5.8895 1.09211 11.901C1.09119 13.8223 1.59594 15.6978 2.55478 17.3515L1 23L6.80649 21.4838C8.4064 22.3528 10.208 22.8103 12.041 22.8112H12.0456C18.0824 22.8112 22.9972 17.9207 23 11.9093C23.0018 8.997 21.8634 6.25708 19.7956 4.19733ZM12.0465 20.9696H12.0428C10.4088 20.9696 8.80707 20.5323 7.40887 19.7064L7.07636 19.5103L3.6306 20.4095L4.55076 17.0655L4.33431 16.7227C3.42244 15.2798 2.94164 13.6124 2.94256 11.901C2.9444 6.90517 7.02939 2.84067 12.0511 2.84067C14.4828 2.84067 16.7689 3.78483 18.4876 5.49717C20.2064 7.21042 21.1523 9.4865 21.1514 11.9074C21.1486 16.9051 17.0646 20.9696 12.0465 20.9696ZM17.0406 14.1835C16.767 14.0469 15.4214 13.3878 15.1699 13.2971C14.9194 13.2063 14.737 13.1605 14.5537 13.4327C14.3704 13.705 13.8472 14.3192 13.687 14.5016C13.5276 14.6831 13.3673 14.706 13.0938 14.5694C12.8202 14.4328 11.9378 14.1459 10.8924 13.2173C10.0791 12.495 9.5292 11.6031 9.36985 11.3299C9.21051 11.0568 9.35328 10.9101 9.4896 10.7744C9.61302 10.6525 9.76316 10.4563 9.9004 10.2968C10.0386 10.1392 10.0837 10.0255 10.1758 9.84308C10.267 9.66158 10.2219 9.50208 10.1528 9.3655C10.0837 9.22983 9.53657 7.88875 9.30906 7.34333C9.08708 6.81167 8.86142 6.88408 8.69286 6.87583C8.53351 6.86758 8.35114 6.86667 8.16785 6.86667C7.98547 6.86667 7.68888 6.9345 7.43835 7.20767C7.18782 7.48083 6.48043 8.13992 6.48043 9.48008C6.48043 10.8212 7.46138 12.1164 7.5977 12.2979C7.73402 12.4794 9.52736 15.2313 12.2731 16.411C12.9261 16.6915 13.4364 16.8593 13.8334 16.9848C14.4892 17.192 15.0861 17.1627 15.5577 17.093C16.0836 17.0151 17.1769 16.4339 17.4054 15.7978C17.6338 15.1616 17.6338 14.6152 17.5647 14.5025C17.4965 14.3879 17.3142 14.3201 17.0406 14.1835Z"
+                                    fill="#EEEEEE" />
+                            </svg>
+                        </a>
+                        <a class="header-social btn btn-light" href="https://t.me/+79090058585" target="_blank">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M22.9854 3.73885C22.6678 7.25134 21.2879 15.778 20.5874 19.7127C20.2909 21.3791 19.7051 21.9364 19.1404 21.9901C17.9105 22.1086 16.9771 21.1365 15.786 20.3181C13.9226 19.0368 12.8692 18.2388 11.0605 16.9871C8.96951 15.541 10.3247 14.7466 11.5158 13.4487C11.8281 13.108 17.2453 7.93644 17.3512 7.46798C17.3635 7.40873 17.3776 7.19024 17.2523 7.07544C17.1271 6.96064 16.9453 6.99953 16.8147 7.031C16.6277 7.07544 13.6509 9.13999 7.88255 13.2246C7.03733 13.8338 6.27151 14.1301 5.58509 14.1153C4.82986 14.0986 3.37587 13.6672 2.29419 13.2968C0.969011 12.845 -0.0861941 12.6043 0.00556288 11.8378C0.0532059 11.4378 0.57728 11.0286 1.57955 10.6102C7.75197 7.78831 11.8687 5.92745 13.9279 5.02757C19.8092 2.46124 21.0303 2.015 21.8278 2.00019C22.8266 1.98537 23.0666 2.85008 22.9854 3.73885Z"
+                                    fill="#EEEEEE" />
+                            </svg>
+                        </a>
+                        <a href="tel:+79090058585">+7 (909) 005-85-85</a>
+                        <a href="/#job" class="btn btn-light">Обсудить проект</a>
+                    </div>
+
+                    <div class="header-mobile">
+                        <div class="burger js-menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="header-mobile__drop js-menu-drop">
+                            <nav class="header-nav">
+                                <ul>
+                                    <li>
+                                        <a href="/#about">О нас</a>
+                                    </li>
+                                    <li>
+                                        <a href="/#projects">Проекты</a>
+                                    </li>
+                                    <li>
+                                        <a href="/#service">Услуги</a>
+                                    </li>
+                                    <!-- <li>
+                                        <a href="/#modern">Возможности</a>
+                                    </li> -->
+                                    <li>
+                                        <a href="/#partners">Партнеры</a>
+                                    </li>
+                                    <li>
+                                        <a href="/#work">Этапы работы</a>
+                                    </li>
+                                    <!-- <li>
+                                        <a href="/#offer">Почему мы</a>
+                                    </li>
+                                    <li>
+                                        <a href="/#faq">FAQ</a>
+                                    </li> -->
+                                    <li>
+                                        <a href="/#contact">Контакты</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="header__contact">
+                                <a href="tel:+79090058585">+7 (909) 005-85-85</a>
+                                <a href="#" class="btn btn-light">Обсудить проект</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="header-nav header-desk">
+                    <ul>
+                        <li>
+                            <a href="/#about">О нас</a>
+                        </li>
+                        <li>
+                            <a href="/#projects">Проекты</a>
+                        </li>
+                        <li>
+                            <a href="/#service">Услуги</a>
+                        </li>
+                        <!-- <li>
+                            <a href="/#modern">Возможности</a>
+                        </li> -->
+                        <li>
+                            <a href="/#partners">Партнеры</a>
+                        </li>
+                        <li>
+                            <a href="/img/">Этапы работы</a>
+                        </li>
+                        <!-- <li>
+                            <a href="/#offer">Почему мы</a>
+                        </li>
+                        <li>
+                            <a href="/#faq">FAQ</a>
+                        </li> -->
+                        <li>
+                            <a href="/#contact">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </header>
+
+        <main class="main">
+            <section class="banner-second">
+                <div class="banner-second__container">
+                    <div class="banner-second__wrap">
+                        <div class="banner-second__inner">
+                            <div class="banner-second__item">
+                                <div class="banner-second__info">
+                                    <div class="banner-second__tags">
+                                        <span>Яндекс Директ</span>
+                                        <span>Google Реклама</span>
+                                    </div>
+                                    <div class="banner-second__text">
+                                        <h2 class="title banner-second__title">
+                                            <span class="color-primary">Контекстная реклама </span>
+                                            в Яндекс и Google
+                                        </h2>
+                                        <div class="banner-second__subtitle">Настроим эффективные рекламные кампании
+                                            в Яндекс Директ и Google Реклама с фокусом на результат.</div>
+                                    </div>
+                                    <div class="banner-second__more">
+                                        <button class="btn btn-dark">Оставить заявку</button>
+                                    </div>
+                                </div>
+                                <div class="banner-second__descr">
+                                    <div class="banner-second__descr-item">
+                                        <span>
+                                            <svg width="22" height="16" viewBox="0 0 22 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M7.18545 15.5C6.88179 15.5001 6.58108 15.4414 6.30055 15.3273C6.02003 15.2132 5.76519 15.0459 5.55064 14.8349L0.5 9.87979L2.42726 7.98886L7.18545 12.6596L19.5727 0.5L21.5 2.39094L8.82026 14.8349C8.60571 15.0459 8.35087 15.2132 8.07035 15.3273C7.78982 15.4414 7.48912 15.5001 7.18545 15.5Z"
+                                                    fill="#FE4F18" />
+                                            </svg>
+                                        </span>
+                                        <p>Точность</p>
+                                        <p>Показы по нужным запросам.</p>
+                                    </div>
+
+                                    <div class="banner-second__descr-item">
+                                        <span>
+                                            <svg width="22" height="16" viewBox="0 0 22 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M7.18545 15.5C6.88179 15.5001 6.58108 15.4414 6.30055 15.3273C6.02003 15.2132 5.76519 15.0459 5.55064 14.8349L0.5 9.87979L2.42726 7.98886L7.18545 12.6596L19.5727 0.5L21.5 2.39094L8.82026 14.8349C8.60571 15.0459 8.35087 15.2132 8.07035 15.3273C7.78982 15.4414 7.48912 15.5001 7.18545 15.5Z"
+                                                    fill="#FE4F18" />
+                                            </svg>
+                                        </span>
+                                        <p>Скорость</p>
+                                        <p>Быстрый запуск и старт за 3 дня.</p>
+                                    </div>
+
+                                    <div class="banner-second__descr-item">
+                                        <span>
+                                            <svg width="22" height="16" viewBox="0 0 22 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M7.18545 15.5C6.88179 15.5001 6.58108 15.4414 6.30055 15.3273C6.02003 15.2132 5.76519 15.0459 5.55064 14.8349L0.5 9.87979L2.42726 7.98886L7.18545 12.6596L19.5727 0.5L21.5 2.39094L8.82026 14.8349C8.60571 15.0459 8.35087 15.2132 8.07035 15.3273C7.78982 15.4414 7.48912 15.5001 7.18545 15.5Z"
+                                                    fill="#FE4F18" />
+                                            </svg>
+                                        </span>
+                                        <p>Контроль</p>
+                                        <p>Гибкая настройка бюджета и ставок.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="banner-second__item">
+                                <div class="banner-second__img">
+                                    <img src="./img/advertising.webp" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="advertising-offer">
+                <div class="advertising-offer__container">
+                    <div class="advertising-offer__wrap">
+                        <div class="advertising-offer__head">
+                            <h2 class="title advertising-offer__title">Что мы предлагаем?</h2>
+                            <p>Контекстная реклама — это быстрый способ получить целевых клиентов уже сегодня.</p>
+                        </div>
+                        <div class="advertising-offer__body">
+                            <div class="card-flip">
+
+                                <div class="card-flip__item card-flip-item">
+                                    <div class="card-flip__inner card-flip-item__inner">
+
+                                        <div class="card-flip__front card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                <span class="color-primary">Анализ</span> аудитории и конкурентов
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Проводим исследование вашей ниши, чтобы понять поведение
+                                                    пользователей
+                                                    и сильные стороны конкурентов.
+                                                </div>
+                                                <div class="card-flip-item__info-count">
+                                                    <span>01</span>
+                                                    <span>
+                                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M19.2704 4.10258L15.4487 0L14.2703 1.26495L17.8221 5.07857L0 5.10541V6.89459L17.8721 6.86775L14.2695 10.7351L15.4478 12L19.2704 7.89742C19.7377 7.39333 20 6.71113 20 6C20 5.28887 19.7377 4.60667 19.2704 4.10258Z"
+                                                                fill="#FE4F18" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-flip__back card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                <span class="color-primary">Анализ</span> аудитории и конкурентов
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Проводим исследование вашей ниши, чтобы понять поведение
+                                                    пользователей
+                                                    и сильные стороны конкурентов.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card-flip__item card-flip-item">
+                                    <div class="card-flip__inner card-flip-item__inner">
+
+                                        <div class="card-flip__front card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                <span class="color-primary">Разработка </span> рекламной стратегии
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Формируем индивидуальный медиаплан: определяем цели, выбираем каналы
+                                                    и типы кампаний.
+                                                </div>
+                                                <div class="card-flip-item__info-count">
+                                                    <span>02</span>
+                                                    <span>
+                                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M19.2704 4.10258L15.4487 0L14.2703 1.26495L17.8221 5.07857L0 5.10541V6.89459L17.8721 6.86775L14.2695 10.7351L15.4478 12L19.2704 7.89742C19.7377 7.39333 20 6.71113 20 6C20 5.28887 19.7377 4.60667 19.2704 4.10258Z"
+                                                                fill="#FE4F18" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-flip__back card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                <span class="color-primary">Разработка </span> рекламной стратегии
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Формируем индивидуальный медиаплан: определяем цели, выбираем каналы
+                                                    и типы кампаний.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card-flip__item card-flip-item">
+                                    <div class="card-flip__inner card-flip-item__inner">
+
+                                        <div class="card-flip__front card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                Полная <span class="color-primary">настройка рекламы</span>
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Создаём и настраиваем кампании в Яндекс Директ и Google Ads —
+                                                    от геотаргетинга до UTM-меток.
+                                                </div>
+                                                <div class="card-flip-item__info-count">
+                                                    <span>03</span>
+                                                    <span>
+                                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M19.2704 4.10258L15.4487 0L14.2703 1.26495L17.8221 5.07857L0 5.10541V6.89459L17.8721 6.86775L14.2695 10.7351L15.4478 12L19.2704 7.89742C19.7377 7.39333 20 6.71113 20 6C20 5.28887 19.7377 4.60667 19.2704 4.10258Z"
+                                                                fill="#FE4F18" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-flip__back card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                Полная <span class="color-primary">настройка рекламы</span>
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Создаём и настраиваем кампании в Яндекс Директ и Google Ads —
+                                                    от геотаргетинга до UTM-меток.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card-flip__item card-flip-item">
+                                    <div class="card-flip__inner card-flip-item__inner">
+
+                                        <div class="card-flip__front card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                Сбор и <span class="color-primary"> кластеризация </span> ключевых слов
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Подбираем эффективные ключи и минус-слова, чтобы привлекать только
+                                                    целевую аудиторию.
+                                                </div>
+                                                <div class="card-flip-item__info-count">
+                                                    <span>04</span>
+                                                    <span>
+                                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M19.2704 4.10258L15.4487 0L14.2703 1.26495L17.8221 5.07857L0 5.10541V6.89459L17.8721 6.86775L14.2695 10.7351L15.4478 12L19.2704 7.89742C19.7377 7.39333 20 6.71113 20 6C20 5.28887 19.7377 4.60667 19.2704 4.10258Z"
+                                                                fill="#FE4F18" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-flip__back card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                Сбор и <span class="color-primary"> кластеризация </span> ключевых слов
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Подбираем эффективные ключи и минус-слова, чтобы привлекать только
+                                                    целевую аудиторию.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card-flip__item card-flip-item">
+                                    <div class="card-flip__inner card-flip-item__inner">
+
+                                        <div class="card-flip__front card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                <span class="color-primary">Создание </span> рекламных объявлений
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Пишем цепляющие и понятные тексты, адаптированные под интересы
+                                                    потенциальных клиентов.
+                                                </div>
+                                                <div class="card-flip-item__info-count">
+                                                    <span>05</span>
+                                                    <span>
+                                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M19.2704 4.10258L15.4487 0L14.2703 1.26495L17.8221 5.07857L0 5.10541V6.89459L17.8721 6.86775L14.2695 10.7351L15.4478 12L19.2704 7.89742C19.7377 7.39333 20 6.71113 20 6C20 5.28887 19.7377 4.60667 19.2704 4.10258Z"
+                                                                fill="#FE4F18" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-flip__back card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                <span class="color-primary">Создание </span> рекламных объявлений
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Пишем цепляющие и понятные тексты, адаптированные под интересы
+                                                    потенциальных клиентов.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card-flip__item card-flip-item">
+                                    <div class="card-flip__inner card-flip-item__inner">
+
+                                        <div class="card-flip__front card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                <span class="color-primary">Настройка ретаргетинга </span>
+                                                и ремаркетинга
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Возвращаем посетителей, которые не совершили целевое действие,
+                                                    с помощью продуманных повторных показов.
+                                                </div>
+                                                <div class="card-flip-item__info-count">
+                                                    <span>06</span>
+                                                    <span>
+                                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M19.2704 4.10258L15.4487 0L14.2703 1.26495L17.8221 5.07857L0 5.10541V6.89459L17.8721 6.86775L14.2695 10.7351L15.4478 12L19.2704 7.89742C19.7377 7.39333 20 6.71113 20 6C20 5.28887 19.7377 4.60667 19.2704 4.10258Z"
+                                                                fill="#FE4F18" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-flip__back card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                <span class="color-primary">Настройка ретаргетинга </span>
+                                                и ремаркетинга
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Возвращаем посетителей, которые не совершили целевое действие,
+                                                    с помощью продуманных повторных показов.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card-flip__item card-flip-item">
+                                    <div class="card-flip__inner card-flip-item__inner">
+
+                                        <div class="card-flip__front card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                <span class="color-primary">Оптимизация </span> и A/B-тесты
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Отслеживаем эффективность, тестируем гипотезы и улучшаем кампании
+                                                    в реальном времени.
+                                                </div>
+                                                <div class="card-flip-item__info-count">
+                                                    <span>07</span>
+                                                    <span>
+                                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M19.2704 4.10258L15.4487 0L14.2703 1.26495L17.8221 5.07857L0 5.10541V6.89459L17.8721 6.86775L14.2695 10.7351L15.4478 12L19.2704 7.89742C19.7377 7.39333 20 6.71113 20 6C20 5.28887 19.7377 4.60667 19.2704 4.10258Z"
+                                                                fill="#FE4F18" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-flip__back card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                <span class="color-primary">Оптимизация </span> и A/B-тесты
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Отслеживаем эффективность, тестируем гипотезы и улучшаем кампании
+                                                    в реальном времени.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card-flip__item card-flip-item">
+                                    <div class="card-flip__inner card-flip-item__inner">
+
+                                        <div class="card-flip__front card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                Регулярная <span class="color-primary"> аналитика </span> и отчёты
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Предоставляем прозрачную статистику, поясняем цифры и даём
+                                                    рекомендации для роста.
+                                                </div>
+                                                <div class="card-flip-item__info-count">
+                                                    <span>08</span>
+                                                    <span>
+                                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M19.2704 4.10258L15.4487 0L14.2703 1.26495L17.8221 5.07857L0 5.10541V6.89459L17.8721 6.86775L14.2695 10.7351L15.4478 12L19.2704 7.89742C19.7377 7.39333 20 6.71113 20 6C20 5.28887 19.7377 4.60667 19.2704 4.10258Z"
+                                                                fill="#FE4F18" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-flip__back card-flip-item__side">
+                                            <div class="card-flip-item__title">
+                                                Регулярная <span class="color-primary"> аналитика </span> и отчёты
+                                            </div>
+                                            <div class="card-flip-item__info">
+                                                <div class="card-flip-item__info-text">
+                                                    Предоставляем прозрачную статистику, поясняем цифры и даём
+                                                    рекомендации для роста.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__bg">
+                    <div class="footer__wrap">
+                        <div class="footer__inner">
+                            <div class="footer__block">
+                                <div class="footer__logo">
+                                    <a href="/">
+                                        <img src="./img/logo.svg" alt="">
+                                    </a>
+                                </div>
+                                <div class="footer__row">
+                                    <p>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M11 8.66176C10.898 9.39706 10.5882 9.97059 10.0706 10.3824C9.56078 10.7941 8.90196 11 8.09412 11C7.16078 11 6.41176 10.7316 5.84706 10.1949C5.28235 9.65809 5 8.94485 5 8.05515C5 7.13603 5.28235 6.39706 5.84706 5.83824C6.41961 5.27941 7.17647 5 8.11765 5C8.92549 5 9.58431 5.19485 10.0941 5.58456C10.6039 5.96691 10.8941 6.48897 10.9647 7.15073H9.32941C9.20392 6.49632 8.80392 6.16912 8.12941 6.16912C7.67451 6.16912 7.31765 6.33456 7.05882 6.66544C6.80784 6.98897 6.68235 7.44118 6.68235 8.02206C6.68235 8.58824 6.80392 9.02941 7.04706 9.34559C7.29804 9.65441 7.64706 9.80882 8.09412 9.80882C8.82353 9.80882 9.2549 9.42647 9.38824 8.66176H11Z"
+                                                fill="#141517" fill-opacity="0.6" />
+                                            <rect x="0.761539" y="0.761539" width="14.4769" height="14.4769"
+                                                rx="7.23846" stroke="#141517" stroke-opacity="0.6"
+                                                stroke-width="1.52308" />
+                                        </svg>
+                                        КОДСЕВЕН 2025
+                                    </p>
+                                    <a href="./pdf/opd.pdf" target="_blank">Политика обработки персональных данных</a>
+                                </div>
+                            </div>
+                            <!-- <div class="footer__block">
+                                <div class="footer-look">
+                                    <div class="footer-look__name t-28">Следите за нашими новостями в Телеграм-канале
+                                    </div>
+                                    <div class="footer-look__more">
+                                        <a href="https://t.me/codeseven_team" class="btn btn-light" target="_blank">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M22.9854 3.73885C22.6678 7.25134 21.2879 15.778 20.5874 19.7127C20.2909 21.3791 19.7051 21.9364 19.1404 21.9901C17.9105 22.1086 16.9771 21.1365 15.786 20.3181C13.9226 19.0368 12.8692 18.2388 11.0605 16.9871C8.96951 15.541 10.3247 14.7466 11.5158 13.4487C11.8281 13.108 17.2453 7.93644 17.3512 7.46798C17.3635 7.40873 17.3776 7.19024 17.2523 7.07544C17.1271 6.96064 16.9453 6.99953 16.8147 7.031C16.6277 7.07544 13.6509 9.13999 7.88255 13.2246C7.03733 13.8338 6.27151 14.1301 5.58509 14.1153C4.82986 14.0986 3.37587 13.6672 2.29419 13.2968C0.969011 12.845 -0.0861941 12.6043 0.00556288 11.8378C0.0532059 11.4378 0.57728 11.0286 1.57955 10.6102C7.75197 7.78831 11.8687 5.92745 13.9279 5.02757C19.8092 2.46124 21.0303 2.015 21.8278 2.00019C22.8266 1.98537 23.0666 2.85008 22.9854 3.73885Z"
+                                                    fill="#FE4F18" />
+                                            </svg>
+                                            Перейти в канал
+                                        </a>
+                                        <p>@codeseven_team</p>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="scrollToTopBtn" style="display: none;">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M28.9382 21.3332L16.8608 9.40084C16.6284 9.18042 16.3187 9.05734 15.9965 9.05734C15.6743 9.05734 15.3646 9.18042 15.1322 9.40084L3.06215 21.3259L1.3335 19.618L13.4035 7.69295C14.1023 7.0341 15.0312 6.6665 15.9971 6.6665C16.9631 6.6665 17.8919 7.0341 18.5907 7.69295L30.6668 19.6253L28.9382 21.3332Z"
+                        fill="#FE4F18" />
+                </svg>
+            </div>
+
+            <div class="modal js-modal">
+                <div class="modal__overlay js-modal-overlay"></div>
+                <div class="modal__wrap">
+                    <div class="modal__close js-modal-close"></div>
+                    <div class="modal__img">
+                        <svg width="47" height="40" viewBox="0 0 47 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M29.2503 10.8937L29.8916 6.9673C30.0597 5.93075 29.9482 4.8677 29.5687 3.88954C29.1891 2.91137 28.5556 2.0541 27.7345 1.40754C26.9134 0.760988 25.9348 0.348951 24.9014 0.214607C23.868 0.080263 22.8178 0.228557 21.8608 0.64395C20.5382 1.24226 19.4757 2.30372 18.8703 3.63153L15.311 10.8937H6.30885C4.79039 10.8937 3.33412 11.5017 2.26041 12.584C1.1867 13.6663 0.583496 15.1343 0.583496 16.6649L0.583496 33.9786C0.583496 35.5092 1.1867 36.9772 2.26041 38.0595C3.33412 39.1418 4.79039 39.7498 6.30885 39.7498H42.6037L46.3863 18.5175L46.4168 10.8937H29.2503ZM4.4004 33.9786V16.6649C4.4004 16.1547 4.60146 15.6654 4.95937 15.3046C5.31727 14.9438 5.80269 14.7412 6.30885 14.7412H13.9426V35.9023H6.30885C5.80269 35.9023 5.31727 35.6997 4.95937 35.3389C4.60146 34.9781 4.4004 34.4888 4.4004 33.9786ZM42.5694 18.0115L39.3823 35.9023H17.7595V14.5661L22.3761 5.13974C22.5324 4.85462 22.7536 4.61097 23.0216 4.42883C23.2895 4.24668 23.5965 4.13123 23.9173 4.09198C24.2381 4.05273 24.5636 4.0908 24.867 4.20305C25.1704 4.3153 25.443 4.49853 25.6624 4.73768C25.8499 4.95746 25.987 5.21625 26.0639 5.49557C26.1407 5.7749 26.1555 6.06789 26.1071 6.35362L24.7349 14.7412H42.5694V18.0115Z"
+                                fill="#FE4F18" />
+                        </svg>
+                    </div>
+                    <div class="modal__text">
+                        <p class="modal__text-title">Данные отправлены!</p>
+                        <p class="modal__text-info">Мы свяжемся с Вами в ближайшее время.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="modal modal-smm">
+            <div class="modal__overlay modal-smm__overlay"></div>
+            <div class="modal-smm__wrap modal__wrap">
+                <div class="modal-smm__close"></div>
+                <div class="modal-smm__title">Пакеты услуг SMM</div>
+                <div class="modal-smm__list">
+
+                    <div class="modal-smm-item">
+                        <div class="modal-smm-item__inner">
+                            <div class="modal-smm-item__name">Базовый пакет</div>
+                            <ul class="modal-smm-item__list">
+                                <li class="modal-smm-item__check">базовый аудит</li>
+                                <li class="modal-smm-item__check">создание контент-плана</li>
+                                <li class="modal-smm-item__check">ведение 1-2 аккаунтов</li>
+                                <li class="modal-smm-item__check">базовая аналитика</li>
+                                <li class="modal-smm-item__no">создание контента</li>
+                                <li class="modal-smm-item__no">модерация</li>
+                                <li class="modal-smm-item__no">анализ конкурентов</li>
+                                <li class="modal-smm-item__no">проведение розыгрышей</li>
+                                <li class="modal-smm-item__no">работа с блогерами</li>
+                                <li class="modal-smm-item__no">продвижение аккаунта</li>
+                                <li class="modal-smm-item__no">закупка рекламы</li>
+                            </ul>
+                            <div class="modal-smm-item__buy">
+                                <div class="modal-smm-item__price">
+                                    <div class="modal-smm-item__price--new">25 000 ₽</div>
+                                    <div class="modal-smm-item__price--old">30 000 ₽</div>
+                                </div>
+                                <button class="modal-smm-item__btn btn btn-dark"
+                                    data-value="Базовый пакет">Оформить</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-smm-item">
+                        <span class="modal-smm-item__choice">Выбор Code7</span>
+                        <div class="modal-smm-item__inner">
+                            <div class="modal-smm-item__name">Средний пакет</div>
+                            <ul class="modal-smm-item__list">
+                                <li class="modal-smm-item__check">базовый аудит</li>
+                                <li class="modal-smm-item__check">создание контент-плана</li>
+                                <li class="modal-smm-item__check">ведение 1-2 соцсетей</li>
+                                <li class="modal-smm-item__check">детальная аналитика</li>
+                                <li class="modal-smm-item__check">создание контента</li>
+                                <li class="modal-smm-item__check">модерация</li>
+                                <li class="modal-smm-item__no">анализ конкурентов</li>
+                                <li class="modal-smm-item__no">проведение розыгрышей</li>
+                                <li class="modal-smm-item__no">работа с блогерами</li>
+                                <li class="modal-smm-item__no">продвижение аккаунта</li>
+                                <li class="modal-smm-item__no">закупка рекламы</li>
+                            </ul>
+                            <div class="modal-smm-item__buy">
+                                <div class="modal-smm-item__price">
+                                    <div class="modal-smm-item__price--new">50 000 ₽</div>
+                                    <div class="modal-smm-item__price--old">55 000 ₽</div>
+                                </div>
+                                <button class="modal-smm-item__btn btn btn-dark"
+                                    data-value="Средний пакет">Оформить</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-smm-item">
+                        <div class="modal-smm-item__inner">
+                            <div class="modal-smm-item__name">Полный пакет</div>
+                            <ul class="modal-smm-item__list">
+                                <li class="modal-smm-item__check">полный аудит</li>
+                                <li class="modal-smm-item__check">создание контент-плана</li>
+                                <li class="modal-smm-item__check">ведение до 3х соцсетей</li>
+                                <li class="modal-smm-item__check">детальная аналитика</li>
+                                <li class="modal-smm-item__check">создание контента</li>
+                                <li class="modal-smm-item__check">модерация</li>
+                                <li class="modal-smm-item__fire">анализ конкурентов</li>
+                                <li class="modal-smm-item__fire">проведение розыгрышей</li>
+                                <li class="modal-smm-item__fire">работа с блогерами</li>
+                                <li class="modal-smm-item__fire">продвижение аккаунта</li>
+                                <li class="modal-smm-item__fire">закупка рекламы</li>
+                            </ul>
+                            <div class="modal-smm-item__buy">
+                                <div class="modal-smm-item__price">
+                                    <div class="modal-smm-item__price--new">75 000 ₽</div>
+                                    <div class="modal-smm-item__price--old">80 000 ₽</div>
+                                </div>
+                                <button class="modal-smm-item__btn btn btn-dark"
+                                    data-value="Полный пакет">Оформить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal modal-send">
+            <div class="modal__overlay modal-send__overlay"></div>
+            <div class="modal-send__wrap modal__wrap">
+                <div class="modal-send__close"></div>
+                <div class="modal-send__title">Оформить пакет</div>
+                <div class="modal-send__subtitle">Заполните данные, и мы свяжемся с Вами в ближайшее время для уточнения
+                    деталей и подтверждения оплаты.</div>
+                <div class="modal-send__form">
+                    <form method="post" class="js-form-tariff">
+                        <div class="modal-send__inputs">
+                            <div class="modal-send__input">
+                                <label>
+                                    <input type="text" placeholder="Ваше имя" name="name" required>
+                                </label>
+                            </div>
+                            <div class="modal-send__input">
+                                <label>
+                                    <input type="tel" placeholder="Номер телефона" class="phone-input" name="phone"
+                                        pattern="^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$"
+                                        required>
+                                </label>
+                            </div>
+                            <div class="modal-send__input">
+                                <label>
+                                    <input type="email" placeholder="Электронная почта" name="email" required>
+                                </label>
+                            </div>
+
+                            <div class="modal-send__select">
+                                <div class="modal-send-select" tabindex="0">
+
+                                    <div class="modal-send-select__trigger">
+                                        <span>Пакеты услуг SMM</span>
+                                        <div class="modal-send-select__arrow"></div>
+                                    </div>
+
+                                    <div class="modal-send-options">
+                                        <span class="modal-send-option selected" data-value="Базовый пакет"
+                                            data-price="25000">
+                                            Базовый пакет
+                                        </span>
+                                        <span class="modal-send-option" data-value="Средний пакет" data-price="50000">
+                                            Средний пакет
+                                        </span>
+                                        <span class="modal-send-option" data-value="Полный пакет" data-price="10">
+                                            Полный пакет
+                                        </span>
+                                    </div>
+
+                                    <input type="hidden" name="package" value="">
+                                    <input type="hidden" name="price" value="">
+
+                                </div>
+                            </div>
+
+                            <div class="modal-send__price modal-send-price">
+                                <div class="modal-send-price__text">Итого:</div>
+                                <div class="modal-send-price__info">
+                                    <div class="modal-send-price__price">
+                                        <div>Базовый пакет</div>
+                                        <span>25 000 ₽</span>
+                                    </div>
+                                    <div class="modal-send-price__discount">
+                                        <div>Ваша скидка</div>
+                                        <span>5 000 ₽</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-send__btn">
+                                <input type="submit" value="Оформить" class="js-tariff">
+                            </div>
+
+                            <div class="modal-send__finish">
+                                Нажимая на кнопку, Вы соглашаетесь с <a href="./pdf/opd.pdf" target="_blank">Политикой
+                                    обработки
+                                    персональных
+                                    данных</a> и <a download href="/dogovor_offer.pdf">договором оферты</a>.
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-send__pay">
+                    <div class="modal-send__pay-qr"></div>
+                    <div class="modal-send__pay-error">
+                        <div></div>
+                        <button class="js-reset-form">Вернуться к форме оплаты</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/accordion.js"></script>
+
+</body>
+
+</html>
