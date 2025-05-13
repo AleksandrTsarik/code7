@@ -57,7 +57,7 @@
   --ff: "Manrope";
   --liner: linear-gradient(
     122.61deg,
-    rgba(var(--primary), 0.5) 0.37%,
+    rgba(var(--primary), 0.6) 0.37%,
     rgb(var(--primary)) 99.63%
   );
 }
@@ -2159,14 +2159,136 @@ section:last-child {
 
 .tariff__title {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
 }
 .tariff__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 8px;
+  height: auto;
+}
+@media (max-width: 1200px) {
+  .tariff__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .tariff__list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
+.tariff-item {
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 767px) {
+  .tariff-item:has(.tariff-item__choice) {
+    margin-top: 41px;
+  }
+}
+.tariff-item__choice {
+  background: var(--liner);
+  color: var(--light);
+  position: absolute;
+  top: -40px;
+  left: 0;
+  z-index: -1;
+  display: block;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  padding: 8px;
+  border-radius: 16px;
+}
+.tariff-item__inner {
+  background-color: var(--light);
+  border-radius: 16px;
+  padding: 32px 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.tariff-item__top {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: solid 1px rgb(173, 173, 174);
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+}
+.tariff-item__midd {
+  flex-grow: 1;
+}
+.tariff-item__name {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.tariff-item__info {
+  color: rgba(20, 21, 23, 0.6);
+  text-align: center;
+  margin-bottom: 24px;
+}
+.tariff-item__price {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  flex-grow: 1;
+  margin-top: auto;
+}
+@media (max-width: 1200px) {
+  .tariff-item__price {
+    text-align: center;
+    margin: auto auto 0;
+  }
+}
+.tariff-item__price-new {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -2px;
+  white-space: nowrap;
+}
+.tariff-item__price-old {
+  white-space: nowrap;
+  text-decoration: line-through;
+  color: rgb(173, 173, 174);
+  letter-spacing: -1px;
+}
+.tariff-item__buy {
+  margin-top: auto;
+}
+.tariff-item__buy button {
+  width: 100%;
+}
+.tariff-item__list {
+  margin-bottom: 24px;
+}
+.tariff-item__list li {
+  margin-bottom: 12px;
+  font-size: 14px;
+  position: relative;
+  padding-left: 20px;
+}
+.tariff-item__list li:before {
+  content: "";
+  background-image: url("../img/smm/check.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+}
+.tariff-item__list li:last-child {
+  margin-bottom: 0;
+}
+
+.tariff-seo .tariff-item:nth-child(2) {
+  display: none;
+}
 .footer__bg {
   background-color: rgba(20, 21, 23, 0.05);
   border-radius: 16px;

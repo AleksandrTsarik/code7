@@ -1725,15 +1725,137 @@
 .tariff {
   &__title {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
   }
   &__list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 8px;
+    height: auto;
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
   }
 }
 .tariff-item {
+  position: relative;
+  z-index: 1;
+  &:has(.tariff-item__choice) {
+    @media (max-width: 767px) {
+      margin-top: 41px;
+    }
+  }
+  &__choice {
+    background: var(--liner);
+    color: var(--light);
+    position: absolute;
+    top: -40px;
+    left: 0;
+    z-index: -1;
+    display: block;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    border-radius: 16px;
+  }
+  &__inner {
+    background-color: var(--light);
+    border-radius: 16px;
+    padding: 32px 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__top {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: solid 1px rgba(173, 173, 174, 1);
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+  }
+  &__midd {
+    flex-grow: 1;
+  }
+  &__name {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  &__info {
+    color: rgba(20, 21, 23, 0.6);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  &__price {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    flex-grow: 1;
+    margin-top: auto;
+    @media (max-width: 1200px) {
+      text-align: center;
+      margin: auto auto 0;
+    }
+  }
+  &__price-new {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -2px;
+    white-space: nowrap;
+  }
+  &__price-old {
+    white-space: nowrap;
+    text-decoration: line-through;
+    color: rgba(173, 173, 174, 1);
+    letter-spacing: -1px;
+  }
+  &__buy {
+    margin-top: auto;
+    button {
+      width: 100%;
+    }
+  }
+  &__list {
+    margin-bottom: 24px;
+    ul {
+    }
+    li {
+      margin-bottom: 12px;
+      font-size: 14px;
+      position: relative;
+      padding-left: 20px;
+      &:before {
+        content: "";
+        background-image: url("../img/smm/check.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        left: 0;
+        top: 0.3em;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.tariff-seo {
+  .tariff-item {
+    &:nth-child(2) {
+      display: none;
+      @media (max-width: 767px) {
+      }
+    }
+  }
 }
 
 .footer {
