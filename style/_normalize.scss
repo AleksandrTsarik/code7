@@ -366,5 +366,8 @@ section {
 }
 
 .color-primary {
-  color: rgb(var(--primary));
+  color: rgb(var(--primary)) !important;
+}
+.bg-primary {
+  background-color: rgb(var(--primary)) !important;
 }
