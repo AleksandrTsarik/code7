@@ -688,7 +688,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.remove('lock');
   }, 3500);
 
-  const btnTariff = document.querySelectorAll(".modal-smm-item__btn");
+  const btnTariff = document.querySelectorAll(".tariff-item__btn");
   const modalTariffsSend = document.querySelector(".modal-send");
   const closeBtnModalTariff = document.querySelector('.modal-send__close');
   const closeOverlayModalTariff = document.querySelector('.modal-send__overlay');

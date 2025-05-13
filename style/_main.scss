@@ -1233,6 +1233,7 @@
     font-size: 28px;
     font-weight: 500;
     gap: 0.2em;
+    max-width: 95%;
     @media (max-width: 1200px) {
       font-size: 24px;
     }
@@ -1241,6 +1242,7 @@
     width: 100%;
   }
   &__info-text {
+    color: rgba(20, 21, 23, 0.6);
   }
   &__info-count {
     display: flex;
@@ -1949,17 +1951,17 @@
       text-align: center;
       margin-bottom: 56px;
     }
-    &__list {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      @media (max-width: 767px) {
-        grid-template-columns: 1fr;
-      }
-      gap: 10px;
-    }
   }
 }
-.modal-smm-item {
+.tariff {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+  gap: 10px;
+}
+.tariff-item {
   position: relative;
   @media (max-width: 767px) {
     &:nth-child(2) {
