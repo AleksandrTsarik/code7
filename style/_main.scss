@@ -1722,6 +1722,20 @@
   }
 }
 
+.tariff {
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+.tariff-item {
+}
+
 .footer {
   &__bg {
     background-color: rgba(20, 21, 23, 0.05);
@@ -1951,17 +1965,17 @@
       text-align: center;
       margin-bottom: 56px;
     }
+    &__list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+      }
+      gap: 10px;
+    }
   }
 }
-.tariff {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  @media (max-width: 767px) {
-    grid-template-columns: 1fr;
-  }
-  gap: 10px;
-}
-.tariff-item {
+.modal-smm-item {
   position: relative;
   @media (max-width: 767px) {
     &:nth-child(2) {
