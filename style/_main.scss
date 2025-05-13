@@ -1749,6 +1749,13 @@
       margin-top: 41px;
     }
   }
+  &:last-child {
+    &:has(.tariff-item__choice) {
+      @media (max-width: 1200px) {
+        margin-top: 41px;
+      }
+    }
+  }
   &__choice {
     background: var(--liner);
     color: var(--light);
@@ -1777,7 +1784,7 @@
     border-bottom: solid 1px rgba(173, 173, 174, 1);
     display: flex;
     flex-direction: column;
-    height: 40%;
+    // height: 40%;
   }
   &__midd {
     flex-grow: 1;
